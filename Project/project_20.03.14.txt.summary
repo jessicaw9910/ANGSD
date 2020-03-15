@@ -1,0 +1,13 @@
+Status	alignment_2/ERR058695.Aligned.sortedByCoord.out.bam	alignment_2/ERR164473.Aligned.sortedByCoord.out.bam	alignment_2/ERR164474.Aligned.sortedByCoord.out.bam	alignment_2/ERR164475.Aligned.sortedByCoord.out.bam	alignment_2/ERR164476.Aligned.sortedByCoord.out.bam
+Assigned	88070843	15222238	28131960	24451343	21166947
+Unassigned_Unmapped	0	0	0	0	0
+Unassigned_MappingQuality	0	0	0	0	0
+Unassigned_Chimera	0	0	0	0	0
+Unassigned_FragmentLength	0	0	0	0	0
+Unassigned_Duplicate	0	0	0	0	0
+Unassigned_MultiMapping	40420741	4659094	9753202	8546091	7641110
+Unassigned_Secondary	0	0	0	0	0
+Unassigned_Nonjunction	0	0	0	0	0
+Unassigned_NoFeatures	21993488	2900160	5326888	4604453	4176085
+Unassigned_Overlapping_Length	0	0	0	0	0
+Unassigned_Ambiguity	5761593	1093562	1965816	1774796	1579207
