@@ -1,0 +1,495 @@
+---
+title: "Final Project"
+author: "Jess White"
+date: "4/14/2020"
+output: 
+  html_document: 
+    toc: yes
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# GitHub Repo
+
+**1. Set up a github repository where you will store all your scripts, and ideally, even your report at one point. Send us the link to the repo. If you want to set your repo to private, you will have to grant us access, i.e. Friederike (friedue), Luce (lskrbnek), Merv (mfansler).**
+
+On github, I created an [ANGSD repo](https://github.com/jessicaw9910/ANGSD) without a `README` file.  I already had git initialized in my local ANGSD directory, so I used the following commands to link the local directory to the github repo.
+
+```{}
+cd OneDrive/MS-CB/ANGSD
+git add .
+git commit -m "commit with full folder"
+git remote add origin https://github.com/jessicaw9910/ANGSD.git
+git remote -v
+git push origin master
+```
+
+# Alignment
+
+**2. Align all your samples. Ideally use a for-loop and/or a script, i.e. automate and standardize the task to a certain extent, but do remember that legibility is valuable, too.**
+
+My original code for downloading the relevant files did not work properly.  I re-wrote the code below and saved it as `get_files.sh`
+
+```{}
+#! / bin / bash
+
+# Usage : get_files.sh <ERR_list> <ftp_1> <ftp_2>
+# Check that we have our command line argument (s)
+
+if [ "$#" -ne 3 ]; then
+    echo "You must enter exactly 3 command line arguments"
+    exit
+fi
+
+# Read argument from command line
+
+ERR_LIST=$1
+FTP_1=$2
+FTP_2=$3
+
+for recs in `cat $ERR_LIST`;
+    do
+    if [[ ! -f ${recs}/${recs}_1.fastq.gz ]]; then
+        LINK="$(egrep ${recs} $FTP_1)"
+        wget -P `pwd`/${recs}/ ftp://${LINK}
+    else
+        echo "${recs}/${recs}_1.fastq.gz exists"
+    fi
+    if [[ ! -f ${recs}/${recs}_2.fastq.gz ]]; then
+        LINK="$(egrep ${recs} $FTP_2)"
+        wget -P `pwd`/${recs}/ ftp://${LINK}
+    else
+        echo "${recs}/${recs}_2.fastq_gz exists"
+    fi;
+done
+
+exit
+
+DIR=/athena/angsd/scratch/jwh4001/project/
+cd $DIR/fastq/
+bash get_files.sh ERR_list.txt ftp_1.txt ftp_2.txt
+```
+
+Additionally, I had not downloaded the annotation file previously, so I did that, as well.
+
+```{}
+cd ..
+wget ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz -O hg38.99.gtf.gz
+```
+
+Per Merv's feedback, I altered the STAR code to run a 2-pass alignment rather than a 1-pass.  To do so, I put the initial alignment output in `alignment_1` and did not output a SAM/BAM file (`--outSAMtype None`).  Then I ran STAR again with the alignment output in `alignment_2` and added the option `--sjdbFileChrStartEnd ${ALIGN_DIR_1}/${recs}.SJ.out.tab`.
+
+Using the following partition, `srun -n 4 --pty --partition=angsd_class --mem=50G bash -i`, it took at least an hour to run each sample.  Therefore, it will take at least a week to run all 169 samples via batch queuing.  Can you please confirm that the 2-pass approach I've implemented is correct and advise if increasing memory beyond the 50G in the batch queue script would be appropriate?  I attempted to run on more than 1 thread previously, but was informed that batch queue scripts can only access 1 thread.  I have not attempted to access more than 100G of the partition for any task to date.
+
+```{}
+rm -r alignment/*
+rmdir alignment
+mkdir alignment_1
+mkdir alignment_2
+
+#!/bin/bash
+
+# Usage : star.sh <ERR_file> <genref_dir> <alignment_dir_1> <alignment_dir_2>
+
+
+# Check that we have our command line arguments
+if [ "$#" -ne 4 ]; then
+    echo "You must enter exactly 4 command line arguments: <ERR_file> <generef_dir> <alignment_dir_1> <alignment_dir_2>"
+    exit
+fi
+
+
+# Read argument from command line
+ERR_FILE=$1
+REF_DIR=$2
+ALIGN_DIR_1=$3
+ALIGN_DIR_2=$4
+
+
+# check that necessary files and directories exist
+# check to see if ERR file exist
+if [[ ! -r $ERR_FILE ]]; then
+    echo "ERR file does not exist. Exiting..."
+    exit
+else
+    echo "ERR file exists..."
+fi
+
+# check to see if reference genome directory exist
+if [[ ! -d $REF_DIR ]]; then
+    echo "Reference genome directory does not exist. Exiting... "
+    exit
+else
+    echo "Reference genome directory exists..."
+fi
+
+# check to see if alignment output directory 1 exist
+if [[ ! -d $ALIGN_DIR_1 ]]; then
+    echo "Alignment output directory 1 does not exist. Exiting... "
+    exit
+else
+    echo "Alignment output directory 1 exists..."
+fi
+
+# check to see if alignment output directory 2 exist
+if [[ ! -d $ALIGN_DIR_2 ]]; then
+    echo "Alignment output directory 2 does not exist. Exiting... "
+    exit
+else
+    echo "Alignment output directory 2 exists..."
+fi
+
+
+# Load packages that we will need
+spack load star@2.7.0e
+spack load samtools@1.9% gcc@6.3.0
+
+
+# for loop iterates over ERR list and runs 2-pass STAR
+for recs in `cat $ERR_FILE`;
+    do
+    FILE1=fastq/${recs}/${recs}_1.fastq.gz
+    FILE2=fastq/${recs}/${recs}_2.fastq.gz
+    if [[ ! -f $FILE1 ]]; then
+        echo "$FILE1 does not exist. Continuing to next entry...";
+        continue
+    else
+        echo "$FILE1 exists..."
+    fi
+    if [[ ! -f $FILE2 ]]; then
+        echo "$FILE2 does not exist. Continuing to next entry...";
+        continue
+    else
+        echo "$FILE2 exists..."
+    fi
+    # Run 2-pass STAR, if result not already present
+    if [ ! -r ${ALIGN_DIR_2}/${recs}.Aligned.sortedByCoord.out.bam ]; then
+        #run first pass with files going to $ALIGN_DIR_1 and no SAM/BAM output
+        STAR --runMode alignReads \
+             --genomeDir ${REF_DIR} \
+             --readFilesIn ${FILE1} ${FILE2} \
+             --readFilesCommand zcat \
+             --alignIntronMin 10 \
+             --outFilterMultimapNmax 20 \
+             --alignSJoverhangMin 8 \
+             --outFileNamePrefix ${ALIGN_DIR_1}/${recs}. \
+             --outSAMtype None
+        #run second pass with files going to $ALIGN_DIR_2 using SJ.out.tab file
+        STAR --runMode alignReads \
+             --genomeDir ${REF_DIR} \
+             --sjdbFileChrStartEnd ${ALIGN_DIR_1}/${recs}.SJ.out.tab \
+             --readFilesIn ${FILE1} ${FILE2} \
+             --readFilesCommand zcat \
+             --alignIntronMin 10 \
+             --outFilterMultimapNmax 20 \
+             --alignSJoverhangMin 8 \
+             --outFileNamePrefix ${ALIGN_DIR_2}/${recs}. \
+             --outSAMtype BAM SortedByCoordinate
+    fi
+    # Samtools index on BAM file
+    if [ ! -r ${ALIGN_DIR_2}/${recs}.Aligned.sortedByCoord.out.bam.bai ]; then
+        samtools index ${ALIGN_DIR_2}/${recs}.Aligned.sortedByCoord.out.bam
+    else
+        echo "${ALIGN_DIR_2}/${recs}.Aligned.sortedByCoord.out.bam.bai already exists..."
+    fi;
+done
+
+exit
+
+bash star.sh fastq/ERR_list.txt hg38_STARindex/ alignment_1/ alignment_2/
+```
+
+```{}
+DIR=/athena/angsd/scratch/jwh4001/project/
+cd $DIR
+rm -rf alignment_1/*
+rm -rf alignment_1/*
+rmdir alignment_1
+rmdir_alignment_2
+mkdir alignment/
+
+mkdir scripts/
+mv *.sh scripts/
+cp ../fastq/ERR_list.txt scripts/
+cp ../fastq/*.sh scripts/
+sed -n '1,3p;4q' ERR_list.txt > ERR_list_rev.txt
+```
+
+Updated STAR alignment batch script (`STAR_updated.sh`)
+
+```{}
+#!/bin/bash -l
+
+#SBATCH --partition=angsd_class
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=24:0:00 # HH/MM/SS
+#SBATCH --mem=50G # memory requested, units available: K,M,G,T
+#SBATCH --mail-user=jwh4001@med.cornell.edu
+#SBATCH --mail-type=ALL
+#SBATCH --requeue
+
+# Usage: sbatch star_updated.sh <ERR> <genref_dir> <alignment_dir>
+
+
+# Check that we have our command line arguments
+if [ "$#" -ne 3 ]; then
+    echo "You must enter exactly 3 command line arguments: <ERR> <generef_dir> $
+    exit
+fi
+
+
+# Read argument from command line
+ERR=$1
+REF_DIR=$2
+ALIGN_DIR=$3
+
+
+# check to see if reference genome directory exist
+if [[ ! -d $REF_DIR ]]; then
+    echo "Reference genome directory does not exist. Exiting... "
+    exit
+else
+    echo "Reference genome directory exists..."
+fi
+
+
+# check to see if alignment output directory exist
+if [[ ! -d $ALIGN_DIR ]]; then
+    echo "Alignment output directory does not exist. Exiting... "
+    exit
+else
+    echo "Alignment output directory exists..."
+fi
+
+
+# Load packages that we will need
+spack load star@2.7.0e
+spack load samtools@1.9% gcc@6.3.0
+
+
+FILE1=/athena/angsd/scratch/jwh4001/project/fastq/${ERR}/${ERR}_1.fastq.gz
+FILE2=/athena/angsd/scratch/jwh4001/project/fastq/${ERR}/${ERR}_2.fastq.gz
+
+if [[ ! -f $FILE1 ]]; then
+    echo "$FILE1 does not exist. Exiting...";
+    exit
+else
+    echo "$FILE1 exists..."
+if [[ ! -f $FILE2 ]]; then
+    echo "$FILE2 does not exist. Exiting...";
+    exit
+else
+    echo "$FILE2 exists..."
+fi
+
+
+# Run 2-pass STAR, if result not already present
+if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
+    STAR --runMode alignReads \
+         --runThreadN 4 \
+         --genomeDir ${REF_DIR} \
+         --readFilesIn ${FILE1} ${FILE2} \
+         --readFilesCommand zcat \
+         --twopassMode Basic \
+         --alignIntronMin 10 \
+         --outFilterMultimapNmax 20 \
+         --alignSJoverhangMin 8 \
+         --outFileNamePrefix ${ALIGN_DIR}/${ERR}. \
+         --outSAMtype BAM SortedByCoordinate
+fi
+
+# Samtools index on BAM file if index file doesn't already exist
+if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam.bai ]; then
+    samtools index ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam
+else
+    echo "${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam.bai already exists..."
+fi
+
+exit
+```
+
+New batch script to run new STAR alignment script for all ERR entries (`queue_star.sh`)
+
+```{}
+#!/bin/bash -l
+
+#SBATCH --partition=angsd_class
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --time=24:0:00 # HH/MM/SS
+#SBATCH --mem=1G # memory requested, units available: K,M,G,T
+#SBATCH --mail-user=jwh4001@med.cornell.edu
+#SBATCH --mail-type=ALL
+#SBATCH --requeue
+
+# Usage: sbatch queue_star.sh <ERR_list>
+
+
+# Check that we have our command line arguments
+if [ "$#" -ne 1 ]; then
+    echo "You must enter exactly 1 command line arguments: <ERR_list>"
+    exit
+fi
+
+
+# Read argument from command line
+ERR_FILE=$1
+
+# check to see if ERR list exists
+if [[ ! -r $ERR_FILE ]]; then
+    echo "ERR file does not exist. Exiting... "
+    exit
+else
+    echo "ERR file exists..."
+fi
+
+
+REF_DIR=/athena/angsd/scratch/jwh4001/project/hg38_STARindex/
+ALIGN_DIR=/athena/angsd/scratch/jwh4001/project/alignment/
+
+
+for ERR in `cat $ERR_FILE`;
+    do
+    if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
+        sbatch star_updated.sh ${ERR} ${REF_DIR} ${ALIGN_DIR}
+    else
+        echo "${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam already exists..."
+    fi;
+done
+
+exit
+```
+
+# Read Count Table
+
+**3. Generate a read count table.**
+
+I used most of the `featureCounts` defaults, with the exception of `-p`, which I added, denoting that the reads are paired-end.
+
+```{}
+mkdir read_counts
+
+spack load subread
+
+# create featureCounts files for the 5 files I was able to align 
+featureCounts -p \ #since paired-end reads
+              -T 2 \
+              -a hg38.99.gtf.gz \
+              -o read_counts/project_20.03.14.txt \
+              alignment_2/*.bam
+      
+cp read_counts/project_20.03.14.* ~              
+```
+
+# Read Count in R and QC
+
+**4. Read the read count table into R and perform the quality controls and processing steps that we discussed in class.**
+
+## Read count table
+
+```{r}
+df1 <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/HW/HW8/project_20.03.14.txt', sep = '\t',header = TRUE)
+names(df1) = gsub(pattern = "alignment_2.", replacement = "", x = names(df1))
+names(df1) = gsub(pattern = ".Aligned.sortedByCoord.out.bam", replacement = "", x = names(df1))
+head(df1)
+```
+
+## BamQC
+
+```{}
+/softlib/apps/EL7/BamQC/bin/bamqc -o QC/ -f hg38.99.gtf.gz -g hg38_STARindex/ alignment_2/*.bam
+```
+
+## RSeQC
+
+I could not get the `read_distribution.py` script to run sufficiently quickly to submit it.  For my own future refence, an aggregate of annotated `.bed` files can be found [here](https://sourceforge.net/projects/rseqc/files/BED/Human_Homo_sapiens/).
+
+Do you have any suggestions for getting this to run more quickly?  I've read about using GNU parallel or potentially using a BigWig package or file format to optimize.
+
+```{}
+# requires a .bed file, which ensembl doesn't create so converted gtf
+spack find
+spack load bedops@2.4.35
+gunzip gunzip hg38.99.gtf.gz
+# since missing "transcript_id" field won't pass convert2bed's internal QC; need to add
+awk '{ if ($0 ~ "transcript_id") print $0; else print $0" transcript_id \"\";"; }' hg38.99.gtf > hg38.99.rev.gtf
+convert2bed --input=gtf < hg38.99.rev.gtf > hg38.99.bed
+rm hg38.99.rev.gtf
+gzip hg38.99.gtf
+
+# the above BED file returned errors, so I downloaded the RefSeq BED file for hg38
+wget https://sourceforge.net/projects/rseqc/files/BED/Human_Homo_sapiens/hg38_RefSeq.bed.gz/download -O hg38_RefSeq.bed.gz
+gunzip $DIR/hg38_RefSeq.bed.gz
+
+# create symbolic link to class scratch directory - did this last time so no need to repeat
+#ln -s /athena/angsd/scratch/jwh4001 /home/jwh4001/angsd
+RSEQC_IMAGE="/athena/angsd/scratch/simg/rseqc-3.0.1.simg"
+cd ~
+spack load singularity@2.6.0
+BED_FILE="/home/jwh4001/angsd/jwh4001/project/hg38_RefSeq.bed"
+BAM_FILE="/home/jwh4001/angsd/jwh4001/project/alignment_2/*.bam"
+OUT_FILE="/home/jwh4001/angsd/jwh4001/project/QC/project.read_distribution.txt"
+singularity exec $RSEQC_IMAGE read_distribution.py -r $BED_FILE -i $BAM_FILE >> $OUT_FILE
+```
+
+## QoRTs
+
+Like `RSeQC`, this tok a long time to run and generate results for these files.  Eventually, an out of memory error was thrown and in the end only log files were produced rather than the expected html output.
+
+```{}
+spack load qorts@1.2.42
+QORTS_LOC=`spack location -i qorts`
+
+cd alignment_2/
+
+name=1
+
+#removed --singleEnded from what we used in class given paired-end
+#warning suggested I set --maxReadLength (>101 in file) in future
+for bam in *.bam; do 
+    java -Xmx4G -jar ${QORTS_LOC}/bin/QoRTs.jar QC /
+    --generatePdfReport ${bam} ../hg38.99.gtf.gz ../QC/${name}
+name=name+1;
+done
+```
+
+## Samtools
+
+```{}
+spack load samtools@1.9%gcc@6.3.0
+cd ../alignment_2
+for n in *.bam; do
+       name="${n%.Aligned.sortedByCoord.out.bam}"
+       samtools flagstat ${n} > ${name}.flagstat.txt;
+done
+mv *flagstat.txt ../QC/
+```
+
+## MultiQC
+
+While I was unable to complete the QC using `RSeQC`, I incorporated the results from `BamQC` and `STAR` into a `MultiQC` report that I've uploaded to my [github repository](https://github.com/jessicaw9910/ANGSD).
+
+```{}
+cd $DIR/QC/
+spack load -r py-multiqc
+multiqc *bamqc.html ../alignment_2/*.Log.final.out *.flagstat.txt
+cp multiqc_report.html ~
+```
+
+To download the following files and upload to my repo I used the following commands.
+
+```{}
+cp project_20.03.14.txt* ~ 
+pscp jwh4001@aristotle.med.cornell.edu:/home/jwh4001/multiqc_report.html OneDrive/MS-CB/ANGSD/project
+pscp jwh4001@aristotle.med.cornell.edu:/home/jwh4001/project_20.03.14.txt* OneDrive/MS-CB/ANGSD/project
+
+cd OneDrive/MS-CB/ANGSD/project
+git add .
+git commit -m "updated multiqc and read count files"
+git push origin master
+```
