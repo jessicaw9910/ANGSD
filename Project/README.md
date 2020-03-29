@@ -1,4 +1,4 @@
-# ANGSD
+# ANGSD Final Project
 
 ## counts
 
