@@ -1,0 +1,7 @@
+*.bam
+*.Rproj.user
+*.Rhistory
+*.RData
+*.Ruserdata
+Papers
+Slides
