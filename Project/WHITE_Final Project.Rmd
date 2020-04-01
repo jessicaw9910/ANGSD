@@ -9,6 +9,199 @@ editor_options:
   chunk_output_type: console
 ---
 
+# Project work
+
+If you need a different program than what we have used in the class, you can use `spack find` to see if the tool is already installed and loadable via spack. If your tool is not there, get in touch with scu@med.cornell.edu to ask them to install it for you.
+
+If you have processes that will take a long time, go back to the notes from the first day and try to make use of `sbatch`.
+
+**1. Download at least one FASTQ file that you will be working with for your project. Document the following details: (2pt)**
+
++ **where did you get it from?**
+https://www.ebi.ac.uk/ena/data/view/ERS167310
++ **what publication is it linked to?**
+[Seo et al., *Genome Research*, 2012.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3483540/pdf/2109.pdf)
++ **who generated the data?**
+South Korean researchers from Seoul National University and The Catholic University of Korea
++ **how was the DNA extracted?**
+RNAs were extracted from tissue using RNAiso Plus (Takara Bio Inc.), followed by purification using RNeasy MinElute (Qiagen Inc.). RNAs were assessed for quality and was quantified using an RNA 6000 Nano LabChip on a 2100 Bioanalyzer (Agilent Inc.).
++ **what library prep was used?**
+All that is mentioned is that the libraries were prepared per protocol described in [Ju et al., *Nature Genetics*, 2011](https://www.nature.com/articles/ng.872).  In that paper, Illumina sequencing libraries were constructed for paired-end sequencing (with an insert size of ~500 bp) but no additional detail was provided on how the library was constructed.
++ **what cell type was used?**
+Human lung cancer tumor biopsies with paired normal surrounding tissue
++ **what was the treatment/experimental condition?**
+No treatment/experimental condition were used but biopsies of the tumor were matched with paired normal surrounding tissue.
++ **what sequencing platform was used?**
+Illumina HiSeq 2000
+
+**2. Align the FASTQ file with an appropriate aligner (you may have to build a new index). Document: (3pt)**
+
++ **parameters (and why you chose them)**
++ **summary of outcome and basic QC**
+
+I created an index with the hg38 genome using the following commands.
+
+```{}
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+gunzip hg38.fa.gz
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/genes/hg38.ensGene.gtf.gz
+gunzip hg38.ensGene.gtf.gz
+mkdir hg38_STARindex
+
+STAR -- runMode genomeGenerate \
+     -- runThreadN 8 \
+     -- genomeDir hg38_STARindex \ 
+     -- genomeFastaFiles hg38.fa \
+     -- sjdbGTFfile hg38.ensGene.gtf
+```
+
+I downloaded and organized the relevant files using the below commands.
+
+```{}
+wget -O experiment_list.txt 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=PRJEB2784&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,fastq_ftp&download=txt'
+egrep "ERR" experiment_list.txt | cut -f 5 > ERR_list.txt
+cut -f 6 experiment_list.txt | egrep "ftp" > ftp_links.txt
+
+# create one directory per each sample and check number of folders in wd
+for recs in `cat ERR_list.txt`; 
+  do mkdir ${recs};
+done
+ls -l | grep "^d" | wc -l
+
+# looking at the experiment_list.txt file, there are 5 run_accessions without associated FASTQ files
+rmdir ERR062334 ERR062335 ERR062336 ERR062337 ERR062338
+
+# then used text editor to remove those 5 files from the ERR_list.txt
+vi ERR_list.txt
+
+# paired end reads in separate FASTQ files
+cat ftp_links.txt | grep -o "^.*;" | sed 's/.$//' > ftp_1.txt
+cat ftp_links.txt | egrep ";" | sed 's/^.*;//' > ftp_2.txt
+
+for recs in `cat ERR_list.txt`;
+  do for links in `cat ftp_1.txt`;
+    do wget -P `pwd`/${recs}/ ftp://${links};
+  done;
+done
+
+for recs in `cat ERR_list.txt`;
+  do for links in `cat ftp_2.txt`;
+    do wget -P `pwd`/${recs}/ ftp://${links};
+  done;
+done
+```
+
+I wrote a script to run STAR aligner with paired end reads in separate FASTQ files.  I also altered some of the basic parameters, including:
+
+ + `--outFilterMultimapNmax 20` to better align with ENCODE RNA-seq guidelines
+ + `--alignSJoverhangMin 8` to better align with ENCODE RNA-seq guidelines
+ + `-- alignIntronMin 10` as Luce mentioned in class, this default is considered not well chosen, so I reduced the minimum intron length to be more permissive
+
+```{}
+#! / bin / bash
+
+# Usage : star.sh <fastq_file_1> <fastq_file_2> <genref_dir> <alignment_dir>
+# Check that we have our command line argument (s)
+
+if [ "$#" -ne 4 ]; then
+    echo "You must enter exactly 2 command line arguments"
+    exit
+fi
+
+# Read argument from command line
+# check that necessary files and directories exist
+
+FILE1=$1
+FILE2=$2
+REF_DIR=$3
+ALIGN_DIR=$4
+
+if [[ ! -f $FILE1 ]]; then
+    echo "$FILE1 does not exist . Exiting ... ";
+    exit
+else
+    echo "$FILE1 exists ..."
+fi
+
+
+if [[ ! -f $FILE2 ]]; then
+    echo "$FILE2 does not exist . Exiting ... ";
+    exit
+else
+    echo "$FILE2 exists ..."
+fi
+
+
+#check to see if reference genome directory exist
+if [[ ! -d $REF_DIR ]]; then
+    echo "Reference genome directory does not exist . Exiting ... "
+    exit
+else
+    echo "Reference genome directory exists ..."
+fi
+
+
+#check to see if alignment output directory exist
+if [[ ! -d $ALIGN_DIR ]]; then
+    echo "Alignment output directory does not exist . Exiting ... "
+    exit
+else
+    echo "Alignment output directory exists ..."
+fi
+
+
+# Load packages that we will need
+spack load star@2.7.0e
+spack load samtools@1.9% gcc@6.3.0
+
+f1="$(basename -- $FILE1)"
+F1="${f1%.fastq.gz}"
+
+f2="$(basename -- $FILE2)"
+F2="${f2%.fastq.gz}"
+
+FCOMBO="${F1%_1}"
+
+
+# Run STAR , if result not already present
+if [ ! -r ${WORKING_DIRECTORY}/${F1}.Aligned.sortedByCoord.out.bam ]; then
+    STAR --runMode alignReads \
+         --genomeDir ${REF_DIR} \
+         --readFilesIn ${FILE1} ${FILE2} \
+         --readFilesCommand zcat \
+         --alignIntronMin 10 \
+         --outFilterMultimapNmax 20 \
+         --alignSJoverhangMin 8 \
+         --outFileNamePrefix ${ALIGN_DIR}/${FCOMBO}. \
+         --outSAMtype BAM SortedByCoordinate
+fi
+
+
+# Samtools index on BAM file
+if [ -r ${ALIGN_DIR}/${F1}.Aligned.sortedByCoord.out.bam ]; then
+    samtools index ${ALIGN_DIR}/${F1}.Aligned.sortedByCoord.out.bam
+fi
+
+if [ -r ${ALIGN_DIR}/${F2}.Aligned.sortedByCoord.out.bam ]; then
+    samtools index ${ALIGN_DIR}/${F2}.Aligned.sortedByCoord.out.bam
+fi
+
+exit
+```
+
+```{}
+bash star.sh fastq/ERR164473/ERR164473_1.fastq.gz fastq/ERR164473/ERR164473_2.fastq.gz hg38_STARindex/ alignment/
+cp ERR164473Aligned.sortedByCoord.out_bamqc.html /home/jwh4001/
+pscp jwh4001@aristotle.med.cornell.edu:/home/jwh4001/ERR164473.star.sorted_bamqc.html OneDrive/MS-CB/ANGSD/Project
+```
+
+I chose to use STAR instead of BWA given that this is RNA-seq data that will likely contain splice sites.  This was a good decision because 86.228% of sequences were primarily aligned and 23.726% contained splice sequences.  According to the BamQC report, this data set passed the Basic Statistics, Genome Coverage, Chromosome Read Density, Soft Clip Length Distributions, Indel Frequencies, and Mapping Quality Distribution QC tests.  However, the data set seemed to fail the Insert Length Distribution test.  I'm not sure what the distribution should generally look like, but it's heavily skewed towards the lower side with the greatest frequency of insertions <1990 bp.
+
+![Insert Length Distribution from BamQC](ERR164473_Insert Length Distribution.png)
+
+
+/scratchLocal/jwh4001
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -227,6 +420,7 @@ Updated STAR alignment batch script (`STAR_updated.sh`)
 #SBATCH --partition=angsd_class
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --job-name="STAR_alignment"
 #SBATCH --time=24:0:00 # HH/MM/SS
 #SBATCH --mem=50G # memory requested, units available: K,M,G,T
 #SBATCH --mail-user=jwh4001@med.cornell.edu
@@ -321,6 +515,7 @@ New batch script to run new STAR alignment script for all ERR entries (`queue_st
 #SBATCH --partition=angsd_class
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --job-name="batch_STAR"
 #SBATCH --time=24:0:00 # HH/MM/SS
 #SBATCH --mem=1G # memory requested, units available: K,M,G,T
 #SBATCH --mail-user=jwh4001@med.cornell.edu
@@ -363,6 +558,13 @@ for ERR in `cat $ERR_FILE`;
 done
 
 exit
+
+
+
+
+
+sed -n '1,3p;4q' ERR_list.txt > ERR_list_rev.txt
+sbatch queue_star.sh ERR_list_rev.txt
 ```
 
 # Read Count Table
