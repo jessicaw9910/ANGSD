@@ -1,6 +1,6 @@
 # ANGSD Final Project
 
-## Effects of Smoking on Gene Expression in Patients with Lung Adenocarcinoma
+## Effects of Smoking on Gene Expression in South Korean Patients with Lung Adenocarcinoma
 This project analyzes data from 36 lung adenocarcinoma patients undergoing lung resections in South Korea.  A total of 63 samples were collected from these 36 patients, including 27 paired-normal biopsies and 36 tumor biopsies.
 
 The original publication referenced is [Seo et al., *Genome Research*, 2012.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3483540/pdf/2109.pdf).  The data are available [here](https://www.ebi.ac.uk/ena/data/view/PRJEB2784) in the ENA.
