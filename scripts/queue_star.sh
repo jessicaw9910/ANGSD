@@ -3,6 +3,7 @@
 #SBATCH --partition=angsd_class
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --job-name="batch_STAR"
 #SBATCH --time=24:0:00 # HH/MM/SS
 #SBATCH --mem=1G # memory requested, units available: K,M,G,T
 #SBATCH --mail-user=jwh4001@med.cornell.edu
@@ -33,7 +34,9 @@ fi
 
 
 REF_DIR=/athena/angsd/scratch/jwh4001/project/hg38_STARindex/
-ALIGN_DIR=/athena/angsd/scratch/jwh4001/project/alignment/
+
+# set align directory to test for additional cancer samples, remove normally
+ALIGN_DIR=/athena/angsd/scratch/jwh4001/project/alignment/test/
 
 
 for ERR in `cat $ERR_FILE`;

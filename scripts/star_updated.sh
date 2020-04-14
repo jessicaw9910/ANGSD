@@ -3,8 +3,9 @@
 #SBATCH --partition=angsd_class
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
+#SBATCH --job-name="STAR_alignment"
 #SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=50G # memory requested, units available: K,M,G,T
+#SBATCH --mem=35G # memory requested, units available: K,M,G,T
 #SBATCH --mail-user=jwh4001@med.cornell.edu
 #SBATCH --mail-type=ALL
 #SBATCH --requeue
@@ -68,6 +69,7 @@ fi
 
 
 # Run 2-pass STAR, if result not already present
+# added --outReadsUnmapped to check a couple of cancer ones, can turn off
 if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
     STAR --runMode alignReads \
          --runThreadN 4 \
@@ -79,6 +81,7 @@ if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
          --outFilterMultimapNmax 20 \
          --alignSJoverhangMin 8 \
          --outFileNamePrefix ${ALIGN_DIR}/${ERR}. \
+	 --outReadsUnmapped Fastx \
          --outSAMtype BAM SortedByCoordinate
 fi
 
