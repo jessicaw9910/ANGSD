@@ -1,0 +1,1890 @@
+RID: 9A3T01WG016	
+Job Title: ERR164585.41770304 0:N:  00 				
+Program:  
+Database: refseq_rna NCBI Transcript Reference Sequences
+Query #1: ERR164585.41770304 0:N:  00 Query ID: lcl|Query_32910 Length: 101
+
+No significant similarity found.
+
+
+
+Query #2: ERR164585.41770305 0:N:  00 Query ID: lcl|Query_32911 Length: 101
+
+No significant similarity found.
+
+
+
+Query #3: ERR164585.41770306 0:N:  00 Query ID: lcl|Query_32912 Length: 101
+
+No significant similarity found.
+
+
+
+Query #4: ERR164585.41770307 0:N:  00 Query ID: lcl|Query_32913 Length: 101
+
+Sequences producing significant alignments:
+                                                                  Max    Total Query   E   Per.                  
+Description                                                       Score  Score cover Value Ident  Accession        
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NR_163906.1      
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NR_163905.1      
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NR_163907.1      
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NR_163909.1      
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NR_163908.1      
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NM_001371245.1   
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NM_001371244.1   
+Homo sapiens protein disulfide isomerase family A member 4...     154    154   100%  2e-36 94.06  NM_004911.5      
+
+
+Alignments:
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 5, non-coding RNA
+Sequence ID: NR_163906.1 Length: 2597 
+Range 1: 1780 to 1880
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1780  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  1839
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  1840  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  1880
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 4, non-coding RNA
+Sequence ID: NR_163905.1 Length: 3116 
+Range 1: 2299 to 2399
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  2299  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  2358
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  2359  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  2399
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 6, non-coding RNA
+Sequence ID: NR_163907.1 Length: 2612 
+Range 1: 1795 to 1895
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1795  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  1854
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  1855  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  1895
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 8, non-coding RNA
+Sequence ID: NR_163909.1 Length: 2662 
+Range 1: 1845 to 1945
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1845  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  1904
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  1905  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  1945
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 7, non-coding RNA
+Sequence ID: NR_163908.1 Length: 2768 
+Range 1: 1951 to 2051
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1951  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  2010
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  2011  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  2051
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 3, mRNA
+Sequence ID: NM_001371245.1 Length: 2709 
+Range 1: 1892 to 1992
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1892  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  1951
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  1952  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  1992
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 1, mRNA
+Sequence ID: NM_001371244.1 Length: 2781 
+Range 1: 1964 to 2064
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1964  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  2023
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  2024  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  2064
+
+
+
+>Homo sapiens protein disulfide isomerase family A member 4 (PDIA4), transcript variant 2, mRNA
+Sequence ID: NM_004911.5 Length: 2767 
+Range 1: 1961 to 2061
+
+Score:154 bits(83), Expect:2e-36, 
+Identities:95/101(94%),  Gaps:0/101(0%), Strand: Plus/Plus
+
+Query  1     AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAATACTGAGCAGGACT  60
+             |||||||||||||||||||||||||||||||||||||||||||||| |||||||||||| 
+Sbjct  1961  AGAGATCTGGAGCATTTGAGCAAGTTTATAGAAGAACATGCCACAAAACTGAGCAGGACC  2020
+
+Query  61    AAGGAAGTGCTTGTAAGGCCTGAGGTCTGCTGAAGGTGGGA  101
+             ||||||| ||||  |||||||||||||||| ||||||||||
+Sbjct  2021  AAGGAAGAGCTTTGAAGGCCTGAGGTCTGCGGAAGGTGGGA  2061
+
+
+
+
+
+Query #5: ERR164585.41770308 0:N:  00 Query ID: lcl|Query_32914 Length: 101
+
+Sequences producing significant alignments:
+                                                                  Max    Total Query   E   Per.                  
+Description                                                       Score  Score cover Value Ident  Accession        
+Homo sapiens oncostatin M receptor (OSMR), transcript variant ... 84.2   84.2  50%   3e-15 96.08  NM_001323505.2   
+Homo sapiens oncostatin M receptor (OSMR), transcript variant ... 84.2   84.2  50%   3e-15 96.08  NM_001323506.2   
+Homo sapiens oncostatin M receptor (OSMR), transcript variant ... 84.2   84.2  50%   3e-15 96.08  NM_003999.3      
+PREDICTED: Homo sapiens oncostatin M receptor (OSMR), transcri... 84.2   84.2  50%   3e-15 96.08  XM_005248384.1   
+PREDICTED: Homo sapiens poly(A) specific ribonuclease subunit...  82.4   82.4  52%   1e-14 94.34  XM_011535034.3   
+PREDICTED: Homo sapiens MYG1 antisense RNA 1 (MYG1-AS1), ncRNA    82.4   82.4  46%   1e-14 97.87  XR_002957414.1   
+PREDICTED: Homo sapiens ALS2 C-terminal like (ALS2CL),...         82.4   82.4  52%   1e-14 94.34  XR_940406.2      
+Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3),...    80.5   80.5  51%   4e-14 94.23  NM_001286568.2   
+Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript varia... 80.5   80.5  51%   4e-14 94.23  NM_001322373.2   
+Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript varia... 80.5   80.5  51%   4e-14 94.23  NM_001322375.2   
+Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript varia... 80.5   80.5  51%   4e-14 94.23  NM_001322376.2   
+Homo sapiens THAP domain containing 5 (THAP5), transcript...      80.5   80.5  54%   4e-14 92.73  NM_001130475.3   
+Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3),...    80.5   80.5  51%   4e-14 94.23  NM_032143.4      
+Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript varia... 80.5   80.5  51%   4e-14 94.23  NM_001322374.2   
+Homo sapiens solute carrier family 25 member 32 (SLC25A32),...    80.5   80.5  51%   4e-14 94.23  NM_030780.5      
+PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3...   80.5   80.5  51%   4e-14 94.23  XM_011511963.2   
+PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3...   80.5   80.5  51%   4e-14 94.23  XM_006712788.2   
+PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3...   80.5   80.5  51%   4e-14 94.23  XM_011511960.2   
+PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3...   80.5   80.5  51%   4e-14 94.23  XM_005263809.2   
+PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3...   80.5   80.5  51%   4e-14 94.23  XM_011511958.3   
+PREDICTED: Homo sapiens uncharacterized LOC105375902...           80.5   80.5  58%   4e-14 91.53  XR_001745955.1   
+PREDICTED: Homo sapiens uncharacterized LOC105375902...           80.5   80.5  58%   4e-14 91.53  XR_929049.2      
+PREDICTED: Homo sapiens uncharacterized LOC105375386...           80.5   80.5  54%   4e-14 92.73  XR_001745258.1   
+PREDICTED: Homo sapiens CEBPZ opposite strand (CEBPZOS),...       80.5   80.5  51%   4e-14 94.23  XM_017003107.1   
+PREDICTED: Homo sapiens CEBPZ opposite strand (CEBPZOS),...       80.5   80.5  51%   4e-14 94.23  XM_017003106.1   
+Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3),...    80.5   80.5  51%   4e-14 94.23  NM_001286569.1   
+Homo sapiens THAP domain containing 5 (THAP5), transcript...      80.5   80.5  54%   4e-14 92.73  NM_001287599.1   
+Homo sapiens THAP domain containing 5 (THAP5), transcript...      80.5   80.5  54%   4e-14 92.73  NM_001287601.1   
+Homo sapiens THAP domain containing 5 (THAP5), transcript...      80.5   80.5  54%   4e-14 92.73  NM_182529.3      
+Homo sapiens THAP domain containing 5 (THAP5), transcript...      80.5   80.5  54%   4e-14 92.73  NM_001287598.1   
+Homo sapiens solute carrier family 25 member 32 (SLC25A32),...    80.5   80.5  51%   4e-14 94.23  NR_102338.1      
+Homo sapiens solute carrier family 25 member 32 (SLC25A32),...    80.5   80.5  51%   4e-14 94.23  NR_102337.1      
+Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), mRNA           78.7   78.7  53%   2e-13 92.59  NM_015035.4      
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NR_161424.1      
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_001369608.1   
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_001308384.2   
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_001369611.1   
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_001369610.1   
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_001369609.1   
+Homo sapiens solute carrier family 38 member 7 (SLC38A7),...      78.7   78.7  50%   2e-13 94.12  NM_018231.3      
+Homo sapiens synapse defective Rho GTPase homolog 2 (SYDE2), mRNA 78.7   78.7  50%   2e-13 94.12  NM_032184.2      
+Homo sapiens prenylcysteine oxidase 1 (PCYOX1), mRNA              78.7   78.7  50%   2e-13 94.12  NM_016297.4      
+PREDICTED: Homo sapiens choline dehydrogenase (CHDH), transcri... 78.7   78.7  50%   2e-13 94.12  XM_017006798.2   
+PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3),...  78.7   78.7  53%   2e-13 92.59  XM_024451862.1   
+PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3),...  78.7   78.7  53%   2e-13 92.59  XM_024451861.1   
+PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3),...  78.7   78.7  53%   2e-13 92.59  XM_005260341.4   
+PREDICTED: Homo sapiens solute carrier family 38 member 7...      78.7   78.7  50%   2e-13 94.12  XR_001751952.2   
+PREDICTED: Homo sapiens solute carrier family 38 member 7...      78.7   78.7  50%   2e-13 94.12  XM_017023396.2   
+PREDICTED: Homo sapiens solute carrier family 38 member 7...      78.7   78.7  50%   2e-13 94.12  XM_017023395.2   
+PREDICTED: Homo sapiens uncharacterized LOC105376447...           78.7   78.7  50%   2e-13 94.12  XR_001747390.2   
+PREDICTED: Homo sapiens uncharacterized LOC105376447...           78.7   78.7  50%   2e-13 94.12  XR_001747389.2   
+PREDICTED: Homo sapiens protein phosphatase 1 regulatory subun... 78.7   78.7  59%   2e-13 90.16  XM_005245551.5   
+PREDICTED: Homo sapiens synapse defective Rho GTPase homolog 2... 78.7   78.7  50%   2e-13 94.12  XR_002957773.1   
+PREDICTED: Homo sapiens synapse defective Rho GTPase homolog 2... 78.7   78.7  50%   2e-13 94.12  XM_017002484.2   
+PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3),...  78.7   78.7  53%   2e-13 92.59  XM_017027738.1   
+PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3),...  78.7   78.7  53%   2e-13 92.59  XM_017027737.1   
+Homo sapiens FA complementation group F (FANCF), mRNA             76.8   76.8  52%   5e-13 92.45  NM_022725.4      
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NR_134868.2      
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NR_134867.2      
+Homo sapiens nuclear protein 1, transcriptional regulator...      76.8   140   52%   5e-13 92.45  NM_012385.3      
+Homo sapiens nuclear protein 1, transcriptional regulator...      76.8   140   52%   5e-13 92.45  NM_001042483.2   
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_001351594.2   
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_001351593.2   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318823.2   
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_001202516.3   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318822.2   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318821.2   
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_001202517.3   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318818.2   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318824.2   
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_001127183.4   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_001318820.2   
+Homo sapiens glutamine amidotransferase like class 1 domain...    76.8   76.8  52%   5e-13 92.45  NM_182612.4      
+Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR),...  76.8   144   52%   5e-13 92.45  NM_003879.7      
+PREDICTED: Homo sapiens testis expressed 2 (TEX2), transcript...  76.8   135   49%   5e-13 94.00  XM_017024847.2   
+PREDICTED: Homo sapiens uncharacterized LOC105369748...           76.8   76.8  55%   5e-13 91.07  XR_944902.3      
+PREDICTED: Homo sapiens uncharacterized LOC105369748...           76.8   76.8  55%   5e-13 91.07  XR_001749110.2   
+PREDICTED: Homo sapiens uncharacterized LOC112268063...           76.8   76.8  49%   5e-13 94.00  XR_002957092.1   
+PREDICTED: Homo sapiens PR/SET domain 2 (PRDM2), transcript...    76.8   76.8  52%   5e-13 92.45  XM_017002264.2   
+PREDICTED: Homo sapiens uncharacterized LOC105376216...           76.8   76.8  52%   5e-13 92.45  XR_001746887.1   
+PREDICTED: Homo sapiens uncharacterized LOC105376216...           76.8   76.8  52%   5e-13 92.45  XR_001746885.1   
+PREDICTED: Homo sapiens uncharacterized LOC105376216...           76.8   76.8  52%   5e-13 92.45  XR_001746883.1   
+PREDICTED: Homo sapiens F-box protein 4 (FBXO4), transcript...    76.8   76.8  52%   5e-13 92.45  XM_011514027.2   
+PREDICTED: Homo sapiens uncharacterized LOC105373796...           76.8   76.8  52%   5e-13 92.45  XR_001739151.1   
+PREDICTED: Homo sapiens uncharacterized LOC105373796...           76.8   76.8  52%   5e-13 92.45  XR_001739150.1   
+PREDICTED: Homo sapiens uncharacterized LOC105373796...           76.8   76.8  52%   5e-13 92.45  XR_001739149.1   
+PREDICTED: Homo sapiens glutamine amidotransferase like class ... 76.8   76.8  52%   5e-13 92.45  XR_242802.3      
+Homo sapiens RNF139 antisense RNA 1 (head to head) (RNF139-AS1... 76.8   76.8  55%   5e-13 91.07  NR_108047.1      
+Homo sapiens uncharacterized LOC100506688 (LOC100506688),...      76.8   142   55%   5e-13 91.07  NR_104614.1      
+Homo sapiens uncharacterized LOC100506688 (LOC100506688),...      76.8   142   55%   5e-13 91.07  NR_104615.1      
+Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant ... 75.0   75.0  57%   2e-12 89.66  NM_001378407.1   
+Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant ... 75.0   75.0  57%   2e-12 89.66  NM_000921.5      
+Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant ... 75.0   75.0  57%   2e-12 89.66  NM_001378408.1   
+Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant ... 75.0   75.0  57%   2e-12 89.66  NM_001244683.2   
+Homo sapiens tripartite motif containing 66 (TRIM66), mRNA        75.0   75.0  45%   2e-12 95.65  NM_014818.2      
+Homo sapiens H2A.Z variant histone 2 (H2AZ2), transcript varia... 75.0   75.0  54%   2e-12 90.91  NM_012412.5      
+Homo sapiens cAMP responsive element binding protein 1 (CREB1)... 75.0   75.0  45%   2e-12 95.65  NM_001371426.1   
+Homo sapiens cAMP responsive element binding protein 1 (CREB1)... 75.0   75.0  45%   2e-12 95.65  NM_001371428.1   
+Homo sapiens cAMP responsive element binding protein 1 (CREB1)... 75.0   75.0  45%   2e-12 95.65  NM_001371427.1   
+Homo sapiens origin recognition complex subunit 6 (ORC6),...      75.0   75.0  45%   2e-12 95.65  NR_037620.2      
+
+
+Alignments:
+>Homo sapiens oncostatin M receptor (OSMR), transcript variant 4, mRNA
+Sequence ID: NM_001323505.2 Length: 5265 
+Range 1: 4708 to 4758
+
+Score:84.2 bits(45), Expect:3e-15, 
+Identities:49/51(96%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||||||||
+Sbjct  4708  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTAGCC  4758
+
+
+
+>Homo sapiens oncostatin M receptor (OSMR), transcript variant 5, mRNA
+Sequence ID: NM_001323506.2 Length: 5268 
+Range 1: 4711 to 4761
+
+Score:84.2 bits(45), Expect:3e-15, 
+Identities:49/51(96%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||||||||
+Sbjct  4711  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTAGCC  4761
+
+
+
+>Homo sapiens oncostatin M receptor (OSMR), transcript variant 1, mRNA
+Sequence ID: NM_003999.3 Length: 5526 
+Range 1: 4969 to 5019
+
+Score:84.2 bits(45), Expect:3e-15, 
+Identities:49/51(96%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||||||||
+Sbjct  4969  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTAGCC  5019
+
+
+
+>PREDICTED: Homo sapiens oncostatin M receptor (OSMR), transcript variant X1, mRNA
+Sequence ID: XM_005248384.1 Length: 5529 
+Range 1: 4972 to 5022
+
+Score:84.2 bits(45), Expect:3e-15, 
+Identities:49/51(96%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||||||||
+Sbjct  4972  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTAGCC  5022
+
+
+
+>PREDICTED: Homo sapiens poly(A) specific ribonuclease subunit PAN3 (PAN3), transcript variant X5, mRNA
+Sequence ID: XM_011535034.3 Length: 8455 
+Range 1: 1614 to 1666
+
+Score:82.4 bits(44), Expect:1e-14, 
+Identities:50/53(94%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| ||||||||||||| |||||
+Sbjct  1614  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCCAA  1666
+
+
+
+>PREDICTED: Homo sapiens MYG1 antisense RNA 1 (MYG1-AS1), ncRNA
+Sequence ID: XR_002957414.1 Length: 1052 
+Range 1: 628 to 674
+
+Score:82.4 bits(44), Expect:1e-14, 
+Identities:46/47(98%),  Gaps:0/47(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCT  47
+            |||||||||||||||||||||||||||| ||||||||||||||||||
+Sbjct  628  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTCAGCCACTGCGCCT  674
+
+
+
+>PREDICTED: Homo sapiens ALS2 C-terminal like (ALS2CL), transcript variant X2, misc_RNA
+Sequence ID: XR_940406.2 Length: 6609 
+Range 1: 505 to 557
+
+Score:82.4 bits(44), Expect:1e-14, 
+Identities:50/53(94%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+            |||||||||||||||||||||||||||| |||| |||||||||||| ||||||
+Sbjct  557  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCAA  505
+
+
+
+>Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant 2, mRNA
+Sequence ID: NM_001286568.2 Length: 6674 
+Range 1: 4042 to 4093
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4093  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4042
+
+
+
+>Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant 1, mRNA
+Sequence ID: NM_001322373.2 Length: 3331 
+Range 1: 3113 to 3164
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  3113  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  3164
+
+
+
+>Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant 4, mRNA
+Sequence ID: NM_001322375.2 Length: 711 
+Range 1: 493 to 544
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+            |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  493  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  544
+
+
+
+>Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant 3, mRNA
+Sequence ID: NM_001322376.2 Length: 3148 
+Range 1: 2930 to 2981
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  2930  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  2981
+
+
+
+>Homo sapiens THAP domain containing 5 (THAP5), transcript variant 1, mRNA
+Sequence ID: NM_001130475.3 Length: 3384 
+Range 1: 2210 to 2264
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||||
+Sbjct  2210  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAAGA  2264
+
+
+
+>Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant 1, mRNA
+Sequence ID: NM_032143.4 Length: 6712 
+Range 1: 4080 to 4131
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4131  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4080
+
+
+
+>Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant 2, mRNA
+Sequence ID: NM_001322374.2 Length: 3152 
+Range 1: 2934 to 2985
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  2934  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  2985
+
+
+
+>Homo sapiens solute carrier family 25 member 32 (SLC25A32), transcript variant 1, mRNA
+Sequence ID: NM_030780.5 Length: 2891 
+Range 1: 1858 to 1909
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| ||||||||||||| ||||
+Sbjct  1858  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCCA  1909
+
+
+
+>PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant X5, mRNA
+Sequence ID: XM_011511963.2 Length: 6671 
+Range 1: 4039 to 4090
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4090  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4039
+
+
+
+>PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant X4, mRNA
+Sequence ID: XM_006712788.2 Length: 6658 
+Range 1: 4026 to 4077
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4077  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4026
+
+
+
+>PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant X3, mRNA
+Sequence ID: XM_011511960.2 Length: 6706 
+Range 1: 4074 to 4125
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4125  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4074
+
+
+
+>PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant X2, mRNA
+Sequence ID: XM_005263809.2 Length: 6684 
+Range 1: 4052 to 4103
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4103  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4052
+
+
+
+>PREDICTED: Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant X1, mRNA
+Sequence ID: XM_011511958.3 Length: 7173 
+Range 1: 4541 to 4592
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4592  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4541
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105375902 (LOC105375902), transcript variant X2, ncRNA
+Sequence ID: XR_001745955.1 Length: 1686 
+Range 1: 1472 to 1529
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:54/59(92%),  Gaps:1/59(1%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAATA  59
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||| ||||||
+Sbjct  1472  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCA-GAAATA  1529
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105375902 (LOC105375902), transcript variant X1, ncRNA
+Sequence ID: XR_929049.2 Length: 3422 
+Range 1: 3208 to 3265
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:54/59(92%),  Gaps:1/59(1%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAATA  59
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||| ||||||
+Sbjct  3208  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCA-GAAATA  3265
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105375386 (LOC105375386), transcript variant X1, ncRNA
+Sequence ID: XR_001745258.1 Length: 2310 
+Range 1: 1 to 55
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1   CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+           |||||||||||||||||||||||||||| |||| ||||||||||||| ||| |||
+Sbjct  1   CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCCTAGA  55
+
+
+
+>PREDICTED: Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant X2, mRNA
+Sequence ID: XM_017003107.1 Length: 3216 
+Range 1: 2998 to 3049
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  2998  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  3049
+
+
+
+>PREDICTED: Homo sapiens CEBPZ opposite strand (CEBPZOS), transcript variant X1, mRNA
+Sequence ID: XM_017003106.1 Length: 3395 
+Range 1: 3177 to 3228
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| |||||||||||| |||||
+Sbjct  3177  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCCA  3228
+
+
+
+>Homo sapiens zinc finger RANBP2-type containing 3 (ZRANB3), transcript variant 3, mRNA
+Sequence ID: NM_001286569.1 Length: 6958 
+Range 1: 4316 to 4367
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Minus
+
+Query  2     TTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||||||| |||||| ||||| ||||||
+Sbjct  4367  TTGGCCTCCCAAAGTGCTGGGATTACATGCGTGAGCCACCGCGCCCAGCCAA  4316
+
+
+
+>Homo sapiens THAP domain containing 5 (THAP5), transcript variant 4, mRNA
+Sequence ID: NM_001287599.1 Length: 3312 
+Range 1: 2150 to 2204
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||||
+Sbjct  2150  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAAGA  2204
+
+
+
+>Homo sapiens THAP domain containing 5 (THAP5), transcript variant 5, mRNA
+Sequence ID: NM_001287601.1 Length: 3241 
+Range 1: 2079 to 2133
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||||
+Sbjct  2079  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAAGA  2133
+
+
+
+>Homo sapiens THAP domain containing 5 (THAP5), transcript variant 2, mRNA
+Sequence ID: NM_182529.3 Length: 3510 
+Range 1: 2348 to 2402
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||||
+Sbjct  2348  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAAGA  2402
+
+
+
+>Homo sapiens THAP domain containing 5 (THAP5), transcript variant 3, mRNA
+Sequence ID: NM_001287598.1 Length: 3388 
+Range 1: 2226 to 2280
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:51/55(93%),  Gaps:0/55(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||||
+Sbjct  2226  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAAGA  2280
+
+
+
+>Homo sapiens solute carrier family 25 member 32 (SLC25A32), transcript variant 3, non-coding RNA
+Sequence ID: NR_102338.1 Length: 3242 
+Range 1: 2195 to 2246
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| ||||||||||||| ||||
+Sbjct  2195  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCCA  2246
+
+
+
+>Homo sapiens solute carrier family 25 member 32 (SLC25A32), transcript variant 2, non-coding RNA
+Sequence ID: NR_102337.1 Length: 3047 
+Range 1: 2000 to 2051
+
+Score:80.5 bits(43), Expect:4e-14, 
+Identities:49/52(94%),  Gaps:0/52(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCA  52
+             |||||||||||||||||||||||||||| |||| ||||||||||||| ||||
+Sbjct  2000  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCCA  2051
+
+
+
+>Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), mRNA
+Sequence ID: NM_015035.4 Length: 10006 
+Range 1: 8529 to 8582
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8582  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8529
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 7, non-coding RNA
+Sequence ID: NR_161424.1 Length: 4233 
+Range 1: 2976 to 3026
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  3026  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2976
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 3, mRNA
+Sequence ID: NM_001369608.1 Length: 3963 
+Range 1: 2706 to 2756
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2756  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2706
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 2, mRNA
+Sequence ID: NM_001308384.2 Length: 3754 
+Range 1: 2497 to 2547
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2547  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2497
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 5, mRNA
+Sequence ID: NM_001369611.1 Length: 4157 
+Range 1: 2900 to 2950
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2950  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2900
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 6, mRNA
+Sequence ID: NM_001369610.1 Length: 3655 
+Range 1: 2398 to 2448
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2448  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2398
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 4, mRNA
+Sequence ID: NM_001369609.1 Length: 3834 
+Range 1: 2577 to 2627
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2627  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2577
+
+
+
+>Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant 1, mRNA
+Sequence ID: NM_018231.3 Length: 4058 
+Range 1: 2801 to 2851
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2851  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2801
+
+
+
+>Homo sapiens synapse defective Rho GTPase homolog 2 (SYDE2), mRNA
+Sequence ID: NM_032184.2 Length: 5466 
+Range 1: 4209 to 4259
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| ||||||||||||| |||
+Sbjct  4209  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCC  4259
+
+
+
+>Homo sapiens prenylcysteine oxidase 1 (PCYOX1), mRNA
+Sequence ID: NM_016297.4 Length: 5339 
+Range 1: 3644 to 3694
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  3694  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  3644
+
+
+
+>PREDICTED: Homo sapiens choline dehydrogenase (CHDH), transcript variant X7, mRNA
+Sequence ID: XM_017006798.2 Length: 6720 
+Range 1: 65 to 115
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+            |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  65   CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  115
+
+
+
+>PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), transcript variant X20, mRNA
+Sequence ID: XM_024451862.1 Length: 9964 
+Range 1: 8482 to 8535
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8535  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8482
+
+
+
+>PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), transcript variant X18, mRNA
+Sequence ID: XM_024451861.1 Length: 9988 
+Range 1: 8506 to 8559
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8559  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8506
+
+
+
+>PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), transcript variant X17, mRNA
+Sequence ID: XM_005260341.4 Length: 9785 
+Range 1: 8303 to 8356
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8356  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8303
+
+
+
+>PREDICTED: Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant X6, misc_RNA
+Sequence ID: XR_001751952.2 Length: 4125 
+Range 1: 2868 to 2918
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2918  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2868
+
+
+
+>PREDICTED: Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant X4, mRNA
+Sequence ID: XM_017023396.2 Length: 3710 
+Range 1: 2453 to 2503
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2503  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2453
+
+
+
+>PREDICTED: Homo sapiens solute carrier family 38 member 7 (SLC38A7), transcript variant X3, mRNA
+Sequence ID: XM_017023395.2 Length: 3858 
+Range 1: 2601 to 2651
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  2651  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  2601
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105376447 (LOC105376447), transcript variant X2, ncRNA
+Sequence ID: XR_001747390.2 Length: 5707 
+Range 1: 3238 to 3288
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  3288  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  3238
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105376447 (LOC105376447), transcript variant X1, ncRNA
+Sequence ID: XR_001747389.2 Length: 6428 
+Range 1: 3959 to 4009
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| |||||||||||| ||||
+Sbjct  4009  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCAGCC  3959
+
+
+
+>PREDICTED: Homo sapiens protein phosphatase 1 regulatory subunit 15B (PPP1R15B), transcript variant X1, mRNA
+Sequence ID: XM_005245551.5 Length: 3967 
+Range 1: 3455 to 3515
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:55/61(90%),  Gaps:1/61(1%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA-AATA  59
+             |||||||||||||||||||||||||||||| || |||||||| |||| ||||||  ||||
+Sbjct  3455  CTTGGCCTCCCAAAGTGCTGGGATTACATGTGTGAGCCACTGGGCCTGGCCAAGTTAATA  3514
+
+Query  60    G  60
+             |
+Sbjct  3515  G  3515
+
+
+
+>PREDICTED: Homo sapiens synapse defective Rho GTPase homolog 2 (SYDE2), transcript variant X4, misc_RNA
+Sequence ID: XR_002957773.1 Length: 6598 
+Range 1: 4833 to 4883
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| ||||||||||||| |||
+Sbjct  4833  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCC  4883
+
+
+
+>PREDICTED: Homo sapiens synapse defective Rho GTPase homolog 2 (SYDE2), transcript variant X2, mRNA
+Sequence ID: XM_017002484.2 Length: 6726 
+Range 1: 4961 to 5011
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:48/51(94%),  Gaps:0/51(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| |||| ||||||||||||| |||
+Sbjct  4961  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTGGCC  5011
+
+
+
+>PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), transcript variant X21, mRNA
+Sequence ID: XM_017027738.1 Length: 10156 
+Range 1: 8674 to 8727
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8727  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8674
+
+
+
+>PREDICTED: Homo sapiens zinc fingers and homeoboxes 3 (ZHX3), transcript variant X19, mRNA
+Sequence ID: XM_017027737.1 Length: 10033 
+Range 1: 8551 to 8604
+
+Score:78.7 bits(42), Expect:2e-13, 
+Identities:50/54(93%),  Gaps:0/54(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAG  54
+             |||||||||||||||||||||||||||| | || |||||||||||| |||||||
+Sbjct  8604  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAAG  8551
+
+
+
+>Homo sapiens FA complementation group F (FANCF), mRNA
+Sequence ID: NM_022725.4 Length: 3291 
+Range 1: 2061 to 2113
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| |||||| |||||
+Sbjct  2061  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCAA  2113
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 9, non-coding RNA
+Sequence ID: NR_134868.2 Length: 4457 
+Range 1: 2069 to 2121
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2121  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  2069
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 8, non-coding RNA
+Sequence ID: NR_134867.2 Length: 4394 
+Range 1: 2006 to 2058
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2058  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  2006
+
+
+
+>Homo sapiens nuclear protein 1, transcriptional regulator (NUPR1), transcript variant 2, mRNA
+Sequence ID: NM_012385.3 Length: 5291 
+Range 1: 1876 to 1928
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||||||||||  ||||| |||||
+Sbjct  1876  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTCAGCCACCACGCCTGGCCAA  1928
+
+
+
+
+Range 2: 2508 to 2553
+
+Score:63.9 bits(34), Expect:4e-09, 
+Identities:42/46(91%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| | || |||||||| |||
+Sbjct  2553  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGTGCC  2508
+
+
+
+>Homo sapiens nuclear protein 1, transcriptional regulator (NUPR1), transcript variant 1, mRNA
+Sequence ID: NM_001042483.2 Length: 5345 
+Range 1: 1930 to 1982
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||||||||||  ||||| |||||
+Sbjct  1930  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTCAGCCACCACGCCTGGCCAA  1982
+
+
+
+
+Range 2: 2562 to 2607
+
+Score:63.9 bits(34), Expect:4e-09, 
+Identities:42/46(91%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| | || |||||||| |||
+Sbjct  2607  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGTGCC  2562
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 15, mRNA
+Sequence ID: NM_001351594.2 Length: 14341 
+Range 1: 11110 to 11162
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  11110  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  11162
+
+
+
+
+Range 2: 1638 to 1688
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1688  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1638
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 14, mRNA
+Sequence ID: NM_001351593.2 Length: 14062 
+Range 1: 10831 to 10883
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  10831  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  10883
+
+
+
+
+Range 2: 1359 to 1409
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1409  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1359
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 6, mRNA
+Sequence ID: NM_001318823.2 Length: 4375 
+Range 1: 1987 to 2039
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2039  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1987
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 5, mRNA
+Sequence ID: NM_001202516.3 Length: 14507 
+Range 1: 11276 to 11328
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  11276  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  11328
+
+
+
+
+Range 2: 1804 to 1854
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1854  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1804
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 5, mRNA
+Sequence ID: NM_001318822.2 Length: 4267 
+Range 1: 1879 to 1931
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  1931  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1879
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 4, mRNA
+Sequence ID: NM_001318821.2 Length: 4452 
+Range 1: 2064 to 2116
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2116  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  2064
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 6, mRNA
+Sequence ID: NM_001202517.3 Length: 14194 
+Range 1: 10963 to 11015
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  10963  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  11015
+
+
+
+
+Range 2: 1491 to 1541
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1541  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1491
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 2, mRNA
+Sequence ID: NM_001318818.2 Length: 4286 
+Range 1: 1898 to 1950
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  1950  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1898
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 7, mRNA
+Sequence ID: NM_001318824.2 Length: 4255 
+Range 1: 1867 to 1919
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  1919  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1867
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 2, mRNA
+Sequence ID: NM_001127183.4 Length: 14480 
+Range 1: 11249 to 11301
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  11249  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  11301
+
+
+
+
+Range 2: 1777 to 1827
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1827  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1777
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 3, mRNA
+Sequence ID: NM_001318820.2 Length: 4344 
+Range 1: 1956 to 2008
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2008  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1956
+
+
+
+>Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant 1, mRNA
+Sequence ID: NM_182612.4 Length: 4363 
+Range 1: 1975 to 2027
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2027  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  1975
+
+
+
+>Homo sapiens CASP8 and FADD like apoptosis regulator (CFLAR), transcript variant 1, mRNA
+Sequence ID: NM_003879.7 Length: 14612 
+Range 1: 11381 to 11433
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1      CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+              |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  11381  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  11433
+
+
+
+
+Range 2: 1909 to 1959
+
+Score:67.6 bits(36), Expect:3e-10, 
+Identities:46/51(90%),  Gaps:0/51(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCC  51
+             |||||||||||||||||||||||||||| | || ||||||| |||| ||||
+Sbjct  1959  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTACGCCCAGCC  1909
+
+
+
+>PREDICTED: Homo sapiens testis expressed 2 (TEX2), transcript variant X5, mRNA
+Sequence ID: XM_017024847.2 Length: 9384 
+Range 1: 6832 to 6881
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:47/50(94%),  Gaps:0/50(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGC  50
+             |||||||||||||||||||||||||||| |||| ||||||||||||| ||
+Sbjct  6881  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCTTGC  6832
+
+
+
+
+Range 2: 8524 to 8554
+
+Score:58.4 bits(31), Expect:2e-07, 
+Identities:31/31(100%),  Gaps:0/31(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGC  31
+             |||||||||||||||||||||||||||||||
+Sbjct  8554  CTTGGCCTCCCAAAGTGCTGGGATTACATGC  8524
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105369748 (LOC105369748), transcript variant X7, ncRNA
+Sequence ID: XR_944902.3 Length: 3692 
+Range 1: 2761 to 2816
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:51/56(91%),  Gaps:0/56(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAA  56
+             |||||||||||||||||||||||||||| || | |||||||||||| |||| ||||
+Sbjct  2816  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCACTGCGCCCAGCCCAGAA  2761
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105369748 (LOC105369748), transcript variant X2, ncRNA
+Sequence ID: XR_001749110.2 Length: 3789 
+Range 1: 2858 to 2913
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:51/56(91%),  Gaps:0/56(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAA  56
+             |||||||||||||||||||||||||||| || | |||||||||||| |||| ||||
+Sbjct  2913  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCACTGCGCCCAGCCCAGAA  2858
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC112268063 (LOC112268063), transcript variant X4, ncRNA
+Sequence ID: XR_002957092.1 Length: 2749 
+Range 1: 3 to 52
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:47/50(94%),  Gaps:0/50(0%), Strand: Plus/Plus
+
+Query  1   CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGC  50
+           |||||||||||||||||||||||||||| |||| ||||||||| ||||||
+Sbjct  3   CTTGGCCTCCCAAAGTGCTGGGATTACAAGCGTGAGCCACTGCACCTAGC  52
+
+
+
+>PREDICTED: Homo sapiens PR/SET domain 2 (PRDM2), transcript variant X10, mRNA
+Sequence ID: XM_017002264.2 Length: 3994 
+Range 1: 365 to 417
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+            |||||||||||||||||||||||||||| |||| ||||||||||||  |||||
+Sbjct  365  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCAA  417
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105376216 (LOC105376216), transcript variant X5, ncRNA
+Sequence ID: XR_001746887.1 Length: 1895 
+Range 1: 1838 to 1890
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| | || |||||||||||| ||||||
+Sbjct  1890  CTTGGCCTCCCAAAGTGCTGGGATTACAAGTGTGAGCCACTGCGCCCAGCCAA  1838
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105376216 (LOC105376216), transcript variant X3, ncRNA
+Sequence ID: XR_001746885.1 Length: 2194 
+Range 1: 2137 to 2189
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| | || |||||||||||| ||||||
+Sbjct  2189  CTTGGCCTCCCAAAGTGCTGGGATTACAAGTGTGAGCCACTGCGCCCAGCCAA  2137
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105376216 (LOC105376216), transcript variant X1, ncRNA
+Sequence ID: XR_001746883.1 Length: 2441 
+Range 1: 2384 to 2436
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| | || |||||||||||| ||||||
+Sbjct  2436  CTTGGCCTCCCAAAGTGCTGGGATTACAAGTGTGAGCCACTGCGCCCAGCCAA  2384
+
+
+
+>PREDICTED: Homo sapiens F-box protein 4 (FBXO4), transcript variant X2, mRNA
+Sequence ID: XM_011514027.2 Length: 2884 
+Range 1: 1748 to 1800
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| ||||||||||||  |||||
+Sbjct  1748  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCAA  1800
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105373796 (LOC105373796), transcript variant X4, ncRNA
+Sequence ID: XR_001739151.1 Length: 1412 
+Range 1: 695 to 747
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+            |||||||||||||||||||||||||||| || | ||||||||||||| |||||
+Sbjct  695  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCACTGCGCCTGGCCAA  747
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105373796 (LOC105373796), transcript variant X3, ncRNA
+Sequence ID: XR_001739150.1 Length: 1666 
+Range 1: 949 to 1001
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| || | ||||||||||||| |||||
+Sbjct  949   CTTGGCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCACTGCGCCTGGCCAA  1001
+
+
+
+>PREDICTED: Homo sapiens uncharacterized LOC105373796 (LOC105373796), transcript variant X1, ncRNA
+Sequence ID: XR_001739149.1 Length: 1467 
+Range 1: 750 to 802
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Plus
+
+Query  1    CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+            |||||||||||||||||||||||||||| || | ||||||||||||| |||||
+Sbjct  750  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCACTGCGCCTGGCCAA  802
+
+
+
+>PREDICTED: Homo sapiens glutamine amidotransferase like class 1 domain containing 1 (GATD1), transcript variant X9, misc_RNA
+Sequence ID: XR_242802.3 Length: 4474 
+Range 1: 2239 to 2291
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:49/53(92%),  Gaps:0/53(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAA  53
+             |||||||||||||||||||||||||||| |||| |||||| ||||| ||||||
+Sbjct  2291  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCAGCCAA  2239
+
+
+
+>Homo sapiens RNF139 antisense RNA 1 (head to head) (RNF139-AS1), transcript variant 1, long non-coding RNA
+Sequence ID: NR_108047.1 Length: 5658 
+Range 1: 5050 to 5105
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:51/56(91%),  Gaps:0/56(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAA  56
+             |||||||||||||||||||||||||||| | || ||||||||| ||||||| ||||
+Sbjct  5105  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCACCTAGCCCAGAA  5050
+
+
+
+>Homo sapiens uncharacterized LOC100506688 (LOC100506688), transcript variant 1, long non-coding RNA
+Sequence ID: NR_104614.1 Length: 3517 
+Range 1: 1579 to 1634
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:51/56(91%),  Gaps:0/56(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAA  56
+             |||||||||||||||||||||||||||| | || |||||||||||| ||||| |||
+Sbjct  1579  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAGGAA  1634
+
+
+
+
+Range 2: 1446 to 1492
+
+Score:65.8 bits(35), Expect:1e-09, 
+Identities:43/47(91%),  Gaps:0/47(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCT  47
+             |||||||||||||||||||||||||||| | || ||||||||| |||
+Sbjct  1446  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCACCT  1492
+
+
+
+>Homo sapiens uncharacterized LOC100506688 (LOC100506688), transcript variant 2, long non-coding RNA
+Sequence ID: NR_104615.1 Length: 3451 
+Range 1: 1513 to 1568
+
+Score:76.8 bits(41), Expect:5e-13, 
+Identities:51/56(91%),  Gaps:0/56(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAA  56
+             |||||||||||||||||||||||||||| | || |||||||||||| ||||| |||
+Sbjct  1513  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCGCCCAGCCAGGAA  1568
+
+
+
+
+Range 2: 1380 to 1426
+
+Score:65.8 bits(35), Expect:1e-09, 
+Identities:43/47(91%),  Gaps:0/47(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCT  47
+             |||||||||||||||||||||||||||| | || ||||||||| |||
+Sbjct  1380  CTTGGCCTCCCAAAGTGCTGGGATTACAGGTGTGAGCCACTGCACCT  1426
+
+
+
+>Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant 3, mRNA
+Sequence ID: NM_001378407.1 Length: 12180 
+Range 1: 8721 to 8778
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:52/58(90%),  Gaps:0/58(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAAT  58
+             |||||||||||||||||||||||||||| |||| ||||||||||||  ||| | ||||
+Sbjct  8778  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCCAAAAAT  8721
+
+
+
+>Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant 1, mRNA
+Sequence ID: NM_000921.5 Length: 12486 
+Range 1: 9027 to 9084
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:52/58(90%),  Gaps:0/58(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAAT  58
+             |||||||||||||||||||||||||||| |||| ||||||||||||  ||| | ||||
+Sbjct  9084  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCCAAAAAT  9027
+
+
+
+>Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant 4, mRNA
+Sequence ID: NM_001378408.1 Length: 12627 
+Range 1: 9168 to 9225
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:52/58(90%),  Gaps:0/58(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAAT  58
+             |||||||||||||||||||||||||||| |||| ||||||||||||  ||| | ||||
+Sbjct  9225  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCCAAAAAT  9168
+
+
+
+>Homo sapiens phosphodiesterase 3A (PDE3A), transcript variant 2, mRNA
+Sequence ID: NM_001244683.2 Length: 10820 
+Range 1: 7361 to 7418
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:52/58(90%),  Gaps:0/58(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGAAAT  58
+             |||||||||||||||||||||||||||| |||| ||||||||||||  ||| | ||||
+Sbjct  7418  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCCCGGCCCAAAAAT  7361
+
+
+
+>Homo sapiens tripartite motif containing 66 (TRIM66), mRNA
+Sequence ID: NM_014818.2 Length: 9800 
+Range 1: 7734 to 7779
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:44/46(96%),  Gaps:0/46(0%), Strand: Plus/Plus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| |||| ||||||||||||
+Sbjct  7734  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCC  7779
+
+
+
+>Homo sapiens H2A.Z variant histone 2 (H2AZ2), transcript variant 1, mRNA
+Sequence ID: NM_012412.5 Length: 3026 
+Range 1: 1466 to 1520
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:50/55(91%),  Gaps:0/55(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCCTAGCCAAGA  55
+             |||||||||||||||||||||||||||| |||| |||||| |||||| ||| |||
+Sbjct  1520  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCTGGCCGAGA  1466
+
+
+
+>Homo sapiens cAMP responsive element binding protein 1 (CREB1), transcript variant 5, mRNA
+Sequence ID: NM_001371426.1 Length: 10021 
+Range 1: 2603 to 2648
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:44/46(96%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| |||| ||||||||||||
+Sbjct  2648  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCC  2603
+
+
+
+>Homo sapiens cAMP responsive element binding protein 1 (CREB1), transcript variant 7, mRNA
+Sequence ID: NM_001371428.1 Length: 9934 
+Range 1: 2516 to 2561
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:44/46(96%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| |||| ||||||||||||
+Sbjct  2561  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCC  2516
+
+
+
+>Homo sapiens cAMP responsive element binding protein 1 (CREB1), transcript variant 6, mRNA
+Sequence ID: NM_001371427.1 Length: 9979 
+Range 1: 2561 to 2606
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:44/46(96%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| |||| ||||||||||||
+Sbjct  2606  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCC  2561
+
+
+
+>Homo sapiens origin recognition complex subunit 6 (ORC6), transcript variant 2, non-coding RNA
+Sequence ID: NR_037620.2 Length: 1674 
+Range 1: 1118 to 1163
+
+Score:75.0 bits(40), Expect:2e-12, 
+Identities:44/46(96%),  Gaps:0/46(0%), Strand: Plus/Minus
+
+Query  1     CTTGGCCTCCCAAAGTGCTGGGATTACATGCGTCAGCCACTGCGCC  46
+             |||||||||||||||||||||||||||| |||| ||||||||||||
+Sbjct  1163  CTTGGCCTCCCAAAGTGCTGGGATTACAGGCGTGAGCCACTGCGCC  1118
+
+
+
+
+
+Query #6: ERR164585.41770309 0:N:  00 Query ID: lcl|Query_32915 Length: 101
+
+No significant similarity found.
+
+
+
+Query #7: ERR164585.41770310 0:N:  00 Query ID: lcl|Query_32916 Length: 101
+
+Sequences producing significant alignments:
+                                                                  Max    Total Query   E   Per.                  
+Description                                                       Score  Score cover Value Ident  Accession        
+Homo sapiens YTH N6-methyladenosine RNA binding protein 2...      128    128   98%   1e-28 89.90  NM_001172828.2   
+Homo sapiens YTH N6-methyladenosine RNA binding protein 2...      128    128   98%   1e-28 89.90  NM_016258.3      
+Homo sapiens YTH N6-methyladenosine RNA binding protein 2...      128    128   98%   1e-28 89.90  NM_001173128.1   
+
+
+Alignments:
+>Homo sapiens YTH N6-methyladenosine RNA binding protein 2 (YTHDF2), transcript variant 3, mRNA
+Sequence ID: NM_001172828.2 Length: 2719 
+Range 1: 342 to 440
+
+Score:128 bits(69), Expect:1e-28, 
+Identities:89/99(90%),  Gaps:0/99(0%), Strand: Plus/Minus
+
+Query  3    CCGGTGCTGAGCTGTCCATAAGAAGAAAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  62
+            ||| |||| ||||||||||||||||  |||||||||||||||||||||||||||||||||
+Sbjct  440  CCGTTGCTCAGCTGTCCATAAGAAGTTAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  381
+
+Query  63   CCAGCCGCATGACCCAAAGAGTAGGAGAAGCCTATGGAG  101
+            | ||| || | ||||||||| ||||||||||| ||||||
+Sbjct  380  CAAGCAGCTTCACCCAAAGAATAGGAGAAGCCAATGGAG  342
+
+
+
+>Homo sapiens YTH N6-methyladenosine RNA binding protein 2 (YTHDF2), transcript variant 1, mRNA
+Sequence ID: NM_016258.3 Length: 2744 
+Range 1: 367 to 465
+
+Score:128 bits(69), Expect:1e-28, 
+Identities:89/99(90%),  Gaps:0/99(0%), Strand: Plus/Minus
+
+Query  3    CCGGTGCTGAGCTGTCCATAAGAAGAAAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  62
+            ||| |||| ||||||||||||||||  |||||||||||||||||||||||||||||||||
+Sbjct  465  CCGTTGCTCAGCTGTCCATAAGAAGTTAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  406
+
+Query  63   CCAGCCGCATGACCCAAAGAGTAGGAGAAGCCTATGGAG  101
+            | ||| || | ||||||||| ||||||||||| ||||||
+Sbjct  405  CAAGCAGCTTCACCCAAAGAATAGGAGAAGCCAATGGAG  367
+
+
+
+>Homo sapiens YTH N6-methyladenosine RNA binding protein 2 (YTHDF2), transcript variant 2, mRNA
+Sequence ID: NM_001173128.1 Length: 2830 
+Range 1: 449 to 547
+
+Score:128 bits(69), Expect:1e-28, 
+Identities:89/99(90%),  Gaps:0/99(0%), Strand: Plus/Minus
+
+Query  3    CCGGTGCTGAGCTGTCCATAAGAAGAAAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  62
+            ||| |||| ||||||||||||||||  |||||||||||||||||||||||||||||||||
+Sbjct  547  CCGTTGCTCAGCTGTCCATAAGAAGTTAAGTAGGGCATGGCTGTGTCACCCCCCGTAGAC  488
+
+Query  63   CCAGCCGCATGACCCAAAGAGTAGGAGAAGCCTATGGAG  101
+            | ||| || | ||||||||| ||||||||||| ||||||
+Sbjct  487  CAAGCAGCTTCACCCAAAGAATAGGAGAAGCCAATGGAG  449
+
+
+
+
+
+Query #8: ERR164585.41770311 0:N:  00 Query ID: lcl|Query_32917 Length: 101
+
+Sequences producing significant alignments:
+                                                                  Max    Total Query   E   Per.                  
+Description                                                       Score  Score cover Value Ident  Accession        
+Homo sapiens protocadherin 17 (PCDH17), mRNA                      159    159   100%  5e-38 95.05  NM_001040429.3   
+PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript...  159    159   100%  5e-38 95.05  XM_017020547.1   
+PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript...  159    159   100%  5e-38 95.05  XM_005266358.2   
+PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript...  159    159   100%  5e-38 95.05  XM_005266357.2   
+
+
+Alignments:
+>Homo sapiens protocadherin 17 (PCDH17), mRNA
+Sequence ID: NM_001040429.3 Length: 8300 
+Range 1: 1901 to 2001
+
+Score:159 bits(86), Expect:5e-38, 
+Identities:96/101(95%),  Gaps:0/101(0%), Strand: Plus/Minus
+
+Query  1     CGCCGCCCGTGCCTCCTCCGCCTAGGACCCGACACTGCAGCTGCCCGTTCTTGCGAGAGT  60
+             |||||||||| |||||||||||||||||||||||||||||||| |||||||||| |||||
+Sbjct  2001  CGCCGCCCGTCCCTCCTCCGCCTAGGACCCGACACTGCAGCTGTCCGTTCTTGCCAGAGT  1942
+
+Query  61    CCCGGTCTGTGAGCCGCACCAGGGCGATGACGGTGCCGGGA  101
+             ||||||| |||| ||||||||||||||||||||||||||||
+Sbjct  1941  CCCGGTCAGTGACCCGCACCAGGGCGATGACGGTGCCGGGA  1901
+
+
+
+>PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript variant X3, mRNA
+Sequence ID: XM_017020547.1 Length: 7271 
+Range 1: 3541 to 3641
+
+Score:159 bits(86), Expect:5e-38, 
+Identities:96/101(95%),  Gaps:0/101(0%), Strand: Plus/Minus
+
+Query  1     CGCCGCCCGTGCCTCCTCCGCCTAGGACCCGACACTGCAGCTGCCCGTTCTTGCGAGAGT  60
+             |||||||||| |||||||||||||||||||||||||||||||| |||||||||| |||||
+Sbjct  3641  CGCCGCCCGTCCCTCCTCCGCCTAGGACCCGACACTGCAGCTGTCCGTTCTTGCCAGAGT  3582
+
+Query  61    CCCGGTCTGTGAGCCGCACCAGGGCGATGACGGTGCCGGGA  101
+             ||||||| |||| ||||||||||||||||||||||||||||
+Sbjct  3581  CCCGGTCAGTGACCCGCACCAGGGCGATGACGGTGCCGGGA  3541
+
+
+
+>PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript variant X2, mRNA
+Sequence ID: XM_005266358.2 Length: 6261 
+Range 1: 3541 to 3641
+
+Score:159 bits(86), Expect:5e-38, 
+Identities:96/101(95%),  Gaps:0/101(0%), Strand: Plus/Minus
+
+Query  1     CGCCGCCCGTGCCTCCTCCGCCTAGGACCCGACACTGCAGCTGCCCGTTCTTGCGAGAGT  60
+             |||||||||| |||||||||||||||||||||||||||||||| |||||||||| |||||
+Sbjct  3641  CGCCGCCCGTCCCTCCTCCGCCTAGGACCCGACACTGCAGCTGTCCGTTCTTGCCAGAGT  3582
+
+Query  61    CCCGGTCTGTGAGCCGCACCAGGGCGATGACGGTGCCGGGA  101
+             ||||||| |||| ||||||||||||||||||||||||||||
+Sbjct  3581  CCCGGTCAGTGACCCGCACCAGGGCGATGACGGTGCCGGGA  3541
+
+
+
+>PREDICTED: Homo sapiens protocadherin 17 (PCDH17), transcript variant X1, mRNA
+Sequence ID: XM_005266357.2 Length: 9063 
+Range 1: 3435 to 3535
+
+Score:159 bits(86), Expect:5e-38, 
+Identities:96/101(95%),  Gaps:0/101(0%), Strand: Plus/Minus
+
+Query  1     CGCCGCCCGTGCCTCCTCCGCCTAGGACCCGACACTGCAGCTGCCCGTTCTTGCGAGAGT  60
+             |||||||||| |||||||||||||||||||||||||||||||| |||||||||| |||||
+Sbjct  3535  CGCCGCCCGTCCCTCCTCCGCCTAGGACCCGACACTGCAGCTGTCCGTTCTTGCCAGAGT  3476
+
+Query  61    CCCGGTCTGTGAGCCGCACCAGGGCGATGACGGTGCCGGGA  101
+             ||||||| |||| ||||||||||||||||||||||||||||
+Sbjct  3475  CCCGGTCAGTGACCCGCACCAGGGCGATGACGGTGCCGGGA  3435
+
+
+
+
+
+Query #9: ERR164585.41770312 0:N:  00 Query ID: lcl|Query_32918 Length: 101
+
+No significant similarity found.
+
+
+
+Query #10: ERR164585.41770313 0:N:  00 Query ID: lcl|Query_32919 Length: 101
+
+No significant similarity found.
+
+
+
+
+
+		
+

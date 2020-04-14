@@ -1,0 +1,11 @@
+RID: 9A3F5Z32014 Job Title: ERR164585.41770304 1:N: 00 Program: Database: refseq_rna NCBI Transcript Reference Sequences
+Query #1: ERR164585.41770304 1:N: 00 Query ID: lcl|Query_29682 Length: 101 No significant similarity found.
+Query #2: ERR164585.41770305 1:N: 00 Query ID: lcl|Query_29683 Length: 101 No significant similarity found.
+Query #3: ERR164585.41770306 1:N: 00 Query ID: lcl|Query_29684 Length: 101 No significant similarity found.
+Query #4: ERR164585.41770307 1:N: 00 Query ID: lcl|Query_29685 Length: 101 No significant similarity found.
+Query #5: ERR164585.41770308 1:N: 00 Query ID: lcl|Query_29686 Length: 101 No significant similarity found.
+Query #6: ERR164585.41770309 1:N: 00 Query ID: lcl|Query_29687 Length: 101 No significant similarity found.
+Query #7: ERR164585.41770310 1:N: 00 Query ID: lcl|Query_29688 Length: 101 No significant similarity found.
+Query #8: ERR164585.41770311 1:N: 00 Query ID: lcl|Query_29689 Length: 101 No significant similarity found.
+Query #9: ERR164585.41770312 1:N: 00 Query ID: lcl|Query_29690 Length: 101 No significant similarity found.
+Query #10: ERR164585.41770313 1:N: 00 Query ID: lcl|Query_29691 Length: 101 No significant similarity found.
