@@ -24,9 +24,11 @@ Contains files needed to run scripts and key outputs
 + **Backup_v02.csv** - output of ANGSD_webscraping.ipynb
 + **Backup_v02.xlsm** - modified to provide additional information
 + **col_names.txt** - needed to run Rmd analysis
++ **demographics.txt** - age at diagnosis, smoking status, gender, and stage; used in Rmd
 + **experiment_list.txt** - needed for file downloading scripts
 + **script_table.csv** - table with description of scripts and links to GitHub repo for Rmd
 + **sig_genes.csv** - output of Rmd DESeq2 analysis
++ **smoking_status.txt** - smoking status annotation file; not currently in use
 
 ## QC
 
@@ -53,7 +55,7 @@ Contains scripts needed to process data, including:
 + **queue_geneBody.sh** - queues geneBody_coverage jobs individually from ERR_list
 + **queue_rseqc.sh** - queues read_distribution jobs individually from ERR_list
 + **queue_star.sh** - queues STAR jobs individually from ERR_list
-+ **read_counts.sh*** - runs FeatureCounts (could not get this to work)
++ **read_counts.sh** - runs FeatureCounts (could not get this to work)
 + **rseqc.sh** - runs RSeQC read_distribution 
 + **star.sh** - basic 1-pass STAR script
 + **star_for_loop.sh** - runs STAR 1-pass as for loop
