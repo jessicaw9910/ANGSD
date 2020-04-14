@@ -1,4 +1,4 @@
-# ANGSD Final Project
+# ANGSD Final Project: Effects of Smoking on Gene Expression in Patients with Lung Adenocarcinoma
 
 ## counts
 
@@ -15,7 +15,7 @@ Contains interim and final read count files assembled via featureCounts
 
 Contains files needed to run scripts and key outputs
 
-+ **Backup_v01.csv** - input needed for ANGSD_webscraping.ipynb taken from https//www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40419
++ **Backup_v01.csv** - input needed for ANGSD_webscraping.ipynb taken from www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40419
 + **Backup_v02.csv** - output of ANGSD_webscraping.ipynb
 + **Backup_v02.xlsm** - modified to provide additional information
 + **col_names.txt** - needed to run Rmd analysis
