@@ -1,4 +1,5 @@
-# ANGSD Final Project: Effects of Smoking on Gene Expression in Patients with Lung Adenocarcinoma
+# ANGSD Final Project
+## Effects of Smoking on Gene Expression in Patients with Lung Adenocarcinoma
 
 ## counts
 
