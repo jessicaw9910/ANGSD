@@ -1,5 +1,9 @@
 # ANGSD Final Project
+
 ## Effects of Smoking on Gene Expression in Patients with Lung Adenocarcinoma
+This project analyzes data from 36 lung adenocarcinoma patients undergoing lung resections in South Korea.  A total of 63 samples were collected from these 36 patients, including 27 paired-normal biopsies and 36 tumor biopsies.
+
+The original publication referenced is [Seo et al., *Genome Research*, 2012.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3483540/pdf/2109.pdf).  The data are available [here](https://www.ebi.ac.uk/ena/data/view/PRJEB2784) in the ENA.
 
 ## counts
 
@@ -16,11 +20,12 @@ Contains interim and final read count files assembled via featureCounts
 
 Contains files needed to run scripts and key outputs
 
-+ **Backup_v01.csv** - input needed for ANGSD_webscraping.ipynb taken from www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40419
++ **Backup_v01.csv** - input needed for ANGSD_webscraping.ipynb taken from [GEO](www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE40419)
 + **Backup_v02.csv** - output of ANGSD_webscraping.ipynb
 + **Backup_v02.xlsm** - modified to provide additional information
 + **col_names.txt** - needed to run Rmd analysis
 + **experiment_list.txt** - needed for file downloading scripts
++ **script_table.csv** - table with description of scripts and links to GitHub repo for Rmd
 + **sig_genes.csv** - output of Rmd DESeq2 analysis
 
 ## QC
@@ -44,15 +49,15 @@ Contains scripts needed to process data, including:
 + **get_files_queue** - an sbatch script to download all FASTQ files from the SRA (does check for continuation)
 + **queue_fastqc.sh** - queues the FastQC jobs individually from ERR_list
 + **queue_flagstat.sh** - queues the Flagstat jobs individually from ERR_list
-+ **queue_star** - takes ERR_list and creates individual sbatch commands to run STAR alignment
++ **queue_star.sh** - takes ERR_list and creates individual sbatch commands to run STAR alignment
 + **queue_geneBody.sh** - queues geneBody_coverage jobs individually from ERR_list
 + **queue_rseqc.sh** - queues read_distribution jobs individually from ERR_list
 + **queue_star.sh** - queues STAR jobs individually from ERR_list
 + **read_counts.sh*** - runs FeatureCounts (could not get this to work)
-+ **rseqc.sh*** - runs RSeQC read_distribution 
++ **rseqc.sh** - runs RSeQC read_distribution 
 + **star.sh** - basic 1-pass STAR script
 + **star_for_loop.sh** - runs STAR 1-pass as for loop
-+ **star_updated** - run STAR alignment using basic 2-pass
++ **star_updated.sh** - run STAR alignment using basic 2-pass
 
 ## unmapped
 

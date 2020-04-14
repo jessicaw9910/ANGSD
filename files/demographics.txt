@@ -1,0 +1,37 @@
+age	gender	smoking	stage
+56	female	never smoker	1A
+60	male	current smoker	2A
+73	male	smoker	1B
+62	male	NA	NA
+58	male	current smoker	1A
+61	female	never smoker	1A
+38	female	never smoker	1A
+60	female	never smoker	4
+59	female	never smoker	NA
+51	female	never smoker	1A
+61	male	smoker	1A
+66	male	smoker	1A
+66	female	never smoker	1A
+66	male	NA	3A
+73	male	smoker	1A
+42	male	smoker	1B
+65	male	smoker	1A
+40	female	never smoker	4
+68	female	smoker	1B
+64	female	never smoker	1A
+54	female	never smoker	1A
+60	male	current smoker	1B
+50	female	current smoker	3A
+72	male	current smoker	2B
+66	male	NA	1B
+63	female	never smoker	1A
+58	female	never smoker	2A
+71	male	smoker	1B
+85	male	smoker	1B
+81	male	smoker	1A
+38	male	current smoker	2B
+68	male	NA	3A
+52	male	never smoker	3B
+65	female	never smoker	1A
+51	male	current smoker	2B
+54	male	smoker	1A

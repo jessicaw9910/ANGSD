@@ -1,11 +1,17 @@
 ---
-title: "Final Project"
+title: 'ANGSD 2020: Final Project'
 author: "Jess White"
 date: "4/14/2020"
-output: 
-  html_document: 
+output:
+  pdf_document:
     toc: yes
-editor_options: 
+  html_document:
+    toc: yes
+    toc_float: yes
+subtitle: |
+    | Effects of Smoking on Gene Expression in
+    | South Korean Patients Patients with Lung Adenocarcinoma
+editor_options:
   chunk_output_type: console
 ---
 
@@ -15,37 +21,297 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-fastq_to_fasta -n -i ERR164585.Unmapped.out.mate2 -o ERR164585.Unmapped.out.mate2.fasta
+Smoking is associated with a different mutational background in lung adenocarcinomas. For example, KRAS mutations are found in ~30% of lung adenocarcinomas but only in ~15% of lung adenocarcinomas from never-smoker lung cancer patients. Additionally, KRAS mutations associated with smoking (G12C, G12V, G12A) are more frequently transversion mutations (G>T, G>C) as opposed to transition mutations (G>A), which occur more often in never-smoker patients ([Ricciuti et al., *Expert Rev Respir Med*, 2016](https://www.ncbi.nlm.nih.gov/pubmed/26714748)).
 
+Additionally, lung adenocarcinomas of smokers are associated with a higher mutational burden.  In the data set used for this analysis, the following was observed:  
 
+*On average, smokers had significantly more amino acid-altering single nucleotide and short-indel mutations (65.0 and 20.6 mutations per cancer tissue of smokers [n = 40] and never-smokers [n = 33], respectively; P-value = 0.0011).*
 
-**1. Download at least one FASTQ file that you will be working with for your project. Document the following details: (2pt)**
+![The transcriptional landscape and mutational profile of 87 lung adenocarcinomas](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/Seo.png)
 
-+ **where did you get it from?**
-https://www.ebi.ac.uk/ena/data/view/ERS167310
-+ **what publication is it linked to?**
-[Seo et al., *Genome Research*, 2012.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3483540/pdf/2109.pdf)
-+ **who generated the data?**
-South Korean researchers from Seoul National University and The Catholic University of Korea
-+ **how was the DNA extracted?**
-RNAs were extracted from tissue using RNAiso Plus (Takara Bio Inc.), followed by purification using RNeasy MinElute (Qiagen Inc.). RNAs were assessed for quality and was quantified using an RNA 6000 Nano LabChip on a 2100 Bioanalyzer (Agilent Inc.).
-+ **what library prep was used?**
-All that is mentioned is that the libraries were prepared per protocol described in [Ju et al., *Nature Genetics*, 2011](https://www.nature.com/articles/ng.872).  In that paper, Illumina sequencing libraries were constructed for paired-end sequencing (with an insert size of ~500 bp) but no additional detail was provided on how the library was constructed.
-+ **what cell type was used?**
-Human lung cancer tumor biopsies with paired normal surrounding tissue
-+ **what was the treatment/experimental condition?**
-No treatment/experimental condition were used but biopsies of the tumor were matched with paired normal surrounding tissue.
-+ **what sequencing platform was used?**
-Illumina HiSeq 2000
+Given these observations, I hypothesized that the expression profiles of lung adenocarcinomas from smokers would be different than those of non-smokers.  Similarly, I postulated that the expression profiles would be different between tumor and paired-normal biopsies.
 
-**2. Align the FASTQ file with an appropriate aligner (you may have to build a new index). Document: (3pt)**
+# Methods
 
-+ **parameters (and why you chose them)**
-+ **summary of outcome and basic QC**
+## Summary of data
 
-# Alignment
+I selected data produced from 200 fresh surgical specimens of primary lung adenocarcinoma from patients who underwent major lung resection in South Korea at Seoul National University and The Catholic University of Korea.  The data are available [here](https://www.ebi.ac.uk/ena/data/view/PRJEB2784) in the ENA.  A summary of the findings was originally published in [Seo et al., *Genome Research*, 2012.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3483540/pdf/2109.pdf).  
 
-## STAR
+Data from a total of 167 samples were available from 87 individuals.  The data set was broken into two sets, one prefixed with "S" containing 51 samples, including some sequenced using Sanger sequencing, and another prefixed with "C" containing 36 samples that were only sequenced using next-generation sequencing methods.  I selected the "C" data for additional analysis.  
+
+Summary statistics for the cohort of 36 "C" patients is shown below.  A total of 63 samples were collected from these 36 patients, including 27 paired-normal biopsies and 36 tumor biopsies.   
+
+```{r demographics, message=FALSE, echo=FALSE}
+demographics <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/files/demographics.txt', 
+                           sep = '\t',header = TRUE)
+summary(demographics)
+```
+
+RNAs were extracted from tissue using RNAiso Plus (Takara Bio Inc.), followed by purification using RNeasy MinElute (Qiagen Inc.). RNAs were assessed for quality and was quantified using an RNA 6000 Nano LabChip on a 2100 Bioanalyzer (Agilent Inc.).  The libraries were prepared per protocol described in [Ju et al., *Nature Genetics*, 2011](https://www.nature.com/articles/ng.872).  Illumina HiSeq 2000 was used as the sequencing platform.  
+
+## Alignment
+
+All relevant scripts are provided via link to my [GitHub repository](https://github.com/jessicaw9910/ANGSD) for this project and can be accessed via the [Scripts] table in the [Appendix].  
+
+After bulk downloading the relevant samples via a script, I wrote a script to run STAR aligner with paired end reads in separate `fastq` files.  I chose to use STAR instead of BWA given that this is RNA-seq data that will likely contain splice sites.  Given that STAR uses soft-clipping, I did not perform any adapter trimming.  I altered some of the default parameters, including:
+
+ + `--outFilterMultimapNmax 20` to better align with ENCODE RNA-seq guidelines
+ + `--alignSJoverhangMin 8` to better align with ENCODE RNA-seq guidelines
+ + `-- alignIntronMin 10` as Luce mentioned in class, this default is considered not well chosen, so I reduced the minimum intron length to be more permissive
+ + `--twopassMode Basic` to find novel splice sites and run a second time to potentialy detect additional
+ + `--outReadsUnmapped Fastx` to collect the unmapped reads to check against BLAST
+
+## Quality control
+
+### FastQC
+
+I created separate outputs for the paired-end read 1 and paired-end read 2 files, originally given limitations of the size constraints of the version of `FastQC` I was using.  Doing so revealed that the quality of the paired-end read 2 files was much worse than that of the paired-end read 1 files.  This was true for both the cancer biopsies, which generally demonstrated worse quality scores, and paired-normal tissue samples, suggesting a systemic, technical issue with the quality of the paired-end read 2 files.  This is an older data set, which was published in 2012 but presumably the samples were collected and analyzed even earlier than that (no dates provided in publication).  The relatively poor quality suggests perhaps the reagents or the sequencer itself (e.g., flow cells, hybridization procedure, etc.) were not as robust as they are today.
+
+![FastQC per base sequence quality plot for paired-end read 1 files.  Orange samples are tumor biopsies and purple samples are paired-normal biopsies](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/fastqc_per_base_sequence_quality_plot_PE1.png)
+
+![FastQC per base sequence quality plot for paired-end read 2 files.  Orange samples are tumor biopsies and purple samples are paired-normal biopsies](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/fastqc_per_base_sequence_quality_plot_PE2.png)
+
+Despite these observations, I did not choose to exclude the paired-end 2 read files.  It is important to be aware of these limitations when assessing the quality of the observations in the downstream analyses.  
+
+### STAR QC
+
+During the alignment, I noticed that a lower percentage of reads were mapping to the genome for the tumor biopsies than for the paired normal biopsies.  Given that the total number of reads was slightly higher for the tumor biopsies, the total number of reads mapped were comparable for the tumor and paired-normal biopsies.  
+
+![Millions of reads mapped vs. % aligned](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/tableScatterPlot.jpeg)
+
+Once I saw the cancer reads were mapping less frequently using STAR, I added the unmapped reads as an output to the `star_updated.sh` script and re-ran for three cancer samples (ERR164583, ERR164584, and ERR164585) and converted the `fastq` ouput to a `fasta` output compatible with BLAST.  I attemped to input the entire resulting `fasta` file for each set of paired-end reads for ERR164585, but my connection timed out.  Instead, I extracted the last 10 unmapped reads of from each paired-end `fasta` file.  The result was that while no significant similarity was found in the paired-end 2 file, 4 of the 10 unmapped reads in the paired-end 1 file produced significant alignments.  
+
+![Abbreviated list of significant alignments for paired-end file 1 ERR164585 read #4](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/BLAST_1.png)
+
+![Suggested alignment of transcript with highest percent identity for paired-end file 1 ERR164585 read #4](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/BLAST_2.png)
+
+Obviously this is only a small subset of the overally unmapped reads, but it suggests that the quality of reads in the paired-end 2 file might not be as robust, as was observed above, and that some of the reads that failed to map using `STAR` are attributable to increased mutational burden.  In some cases, particularly for read 5, this mutational burden meant that the read mapped with similarly high identity to multiple locations in the genome. This suggests in the future it may be productive to run `STAR` with more permissive mismatch criteria and a variant analysis would be particularly helpful in identifying the most likely variants found in this data set.  
+
+### RSeQC
+
+Despite some of the differences in the `FastQC` metrics and the percentage alignment via `STAR`, the read distribution per `RSeQC` was quite similar with a slight majority of reads mapping to a coding exon region.
+
+![RSeqQC read distribution of mapped reads](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/rseqc_read_distribution_plot.png)
+
+I was unable to run the `geneBody_coverage.py` script for the `BAM` files given the time duration and memory requirements, but I did write a script to perform and queue this task.  It would have been helpful to assess if there was degradation in the sample that could have caused the unfavorable `FastQC` findings.  
+
+# Downstream analyses
+
+```{r import_data, message=FALSE}
+library(magrittr)
+
+# import read counts file and remove extraneous info in colnames
+readcounts <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/counts/project_20.04.09.txt', 
+                         sep = '\t',header = TRUE)
+names(readcounts) = gsub(pattern = "alignment.", replacement = "", x = names(readcounts))
+names(readcounts) = gsub(pattern = ".Aligned.sortedByCoord.out.bam", 
+                         replacement = "", x = names(readcounts))
+
+# import column names in order
+col_names <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/files/col_names.txt',
+                        header = FALSE, stringsAsFactors = FALSE)
+orig_names <- names(readcounts)
+rownames(readcounts) <- readcounts$Geneid
+colnames(readcounts) <- c(colnames(readcounts)[1:6],
+                          col_names$V1)
+
+# remove first 6 columns and create sample conditions df
+readcounts <- readcounts[ , -c(1:6)]
+sample_info <- data.frame(condition = c(rep("normal", 27), rep("cancer", 36)))
+rownames(sample_info) <- names(readcounts)
+```
+
+## Read count assessment
+
+Given that I observed that during alignment that a lower percentage of transcripts mapped to the genome, I wanted to see how the total number of transcripts compared to the number of unique genes detected for the cancer and paired-normal biopsies.  Even though a lower percentage of reads mapped for the cancer biopsies, both cancer and normal samples contained between between 15 and 30 million transcripts.  However, the cancer samples contained many more uniquely mapped genes.  I ran a multiple regression of number of unique genes detected on number of total transcripts detected and the biopsy source type, and even controlling for the total number of transcripts detected, the condition had a statistically significant impact on the number of unique genes detected. 
+
+```{r qc, message=FALSE}
+library(ggplot2)
+library(reshape2)
+
+col_sums <- melt(colSums(readcounts))
+condition <- c(rep("normal", 27), rep("cancer", 36))
+col_sums <- cbind(col_sums, condition)
+for (n in seq(1, length(readcounts))){
+  col_sums$genes_expressed[n] <- sum(readcounts[, n] > 0)
+}
+rownames(col_sums) <- gsub("LC_", "", rownames(col_sums))
+
+ggplot(col_sums, aes(x = value, y = genes_expressed, color = condition)) +
+  geom_point() +
+  geom_smooth(method = lm) +
+  geom_text(label=rownames(col_sums), size=2, nudge_y = 175) +
+  xlab("Total number of transcripts detected") +
+  ylab("Number of unique genes detected")
+
+summary(lm(genes_expressed ~ value + factor(condition), data = col_sums))
+```
+
+## DESeq analysis
+
+I performed the preliminary `DESeq` assessment using tumor vs. paired-normal biopsy as the design condition.
+
+```{r deseq_rlog, message=FALSE, eval=FALSE}
+library(DESeq2)
+
+DESeq.ds <- DESeqDataSetFromMatrix(countData = readcounts,
+                                   colData = sample_info,
+                                   design = ~ condition)
+
+# drop genes with no reads
+keep_genes <- rowSums(counts(DESeq.ds)) > 0
+DESeq.ds <- DESeq.ds[ keep_genes, ]
+
+#rlog normalization
+DESeq.rlog <- rlog(DESeq.ds, blind = TRUE)
+rlog.norm.counts <- assay(DESeq.rlog)
+save.image(file = "C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/RNAseqSeo.RData")
+```
+
+## Clustering analysis
+
+I created a heatmap and a dendrogram using complete linkage hierarchical clustering.  In the dendrogram, four major clusters emerged.  The first cluster on the left showed the highest degree of similarity.  Interestingly, 89% of the 9 patients in this cluster identified as smokers. The next cluster contained 13 patients of which 69% identified as never smokers.  All but one of the paired normal biopsies clustered together.  Finally, there was a cluster that contained a mix of smokers, ever smokers, and NAs.  Even within this less well-defined cluster, two of the sub-clusters contained either all smokers or never smokers.  Interestingly, this was the cluster with the lowest degree of similarity.
+
+![RSeqQC read distribution of mapped reads](C:/Users/jessb/OneDrive/MS-CB/ANGSD/Project/images/dendrogram.png)
+
+```{r clustering, message=FALSE, warning=FALSE}
+load("C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/RNAseqSeo.RData")
+library(pheatmap)
+library(magrittr)
+
+corr_coeff <- cor(rlog.norm.counts, method = "pearson")
+fontsize = 10 - ncol(readcounts) / 15
+as.dist(1-corr_coeff, upper = TRUE) %>% 
+  as.matrix %>% 
+  pheatmap(., main = "Pearson correlation", fontsize = fontsize)
+
+as.dist(1 - corr_coeff) %>% hclust %>%
+  plot( ., labels = colnames(rlog.norm.counts),
+        main = "rlog transformed read counts", cex = 0.5)
+```
+
+## Differential gene expression analysis
+
+Using the condition of tumor or paired-normal biopsy, over 18,000 individual genes showed significant differential expression after adjusting for multiple hypothesis correction.  
+
+```{r deseq_results_cancer, message=FALSE, warning=FALSE}
+library(DESeq2)
+
+DESeq.ds <- DESeq(DESeq.ds)
+DGE.results <- results(DESeq.ds, independentFiltering = TRUE, alpha = 0.05)
+
+head(DGE.results)
+summary(DGE.results)
+table(DGE.results$padj < 0.05)
+```
+
+### Discussion of differentially expressed genes  
+
+Many of the genes that emerged as signficantly differentially expressed between cancer and normal tissue at the lowest p-values were either pseudogenes or lncRNA.  Study of these genetic elements is emerging, so assessment of their importance is challenging.  Of the different coding regions that were differentially expressed, a number have been previously shown to be differentialy expressed in lung adenocarcinoma, including EBF1 (Shen et al., *Cancer Res*, 2019), MTBP (in the p53 pathway; Mao et al., *Medicine*, 2018), CCL19 (important for the tumor microenvironment; Cheng et al., *J Allergy Clin Immunol*, 2018), ZNF683, MIR664A (associated with smoking-induced COPD; Zhong et al., *Int J Chron Obstruct Pulmon Dis*, 2019).  
+
+```{r sig_genes_cancer, results='asis', message=FALSE}
+# BiocManager::install("EnsDb.Hsapiens.v86")
+library(EnsDb.Hsapiens.v86)
+
+sig_genes <- order(DGE.results$padj)[1: length(which(DGE.results$padj < 0.05))]
+sig_genes <- DataFrame(gene_index = sig_genes)
+sig_genes$geneid <- rownames(readcounts)[sig_genes$gene_index]
+sig_genes$padj <- sort(DGE.results$padj)[1: length(which(DGE.results$padj < 0.05))]
+
+geneIDs1 <- ensembldb::select(EnsDb.Hsapiens.v86, keys = sig_genes$geneid, 
+                              keytype = "GENEID", columns = c("SYMBOL","GENEID"))
+
+sig_genes_new <- merge(sig_genes, geneIDs1, all.x = TRUE, 
+                       by.x = "geneid", by.y = "GENEID")
+sig_genes_new <- sig_genes_new[order(sig_genes_new$padj), ]
+
+library(knitr)
+top_25 <- head(sig_genes_new, 25)
+top_25$padj <- format(top_25$padj, digits = 3)
+kable(top_25)
+
+# write.csv(sig_genes_new, "sig_genes.csv")
+```
+
+# Appendix
+
+## Scripts
+
+| __Script__                                                                                                   | __Description__                                                                        |
+|--------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [ANGSD_webscraping.ipynb](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/ANGSD_webscraping.ipynb) | Allows collection of per sample smoking and cancer vs. paired-normal data                  |
+| [fastqc.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/fastqc.sh)                             | Runs FastQC on a single FASTQ file                                                         |
+| [flagstat.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/flagstat.sh)                         | Runs Flagstat on a single BAM file                                                         |
+| [geneBody.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/geneBody.sh)                         | Runs RSeQC geneBody_coverage (took too long to run to incorporate into output)             |
+| [get_files.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/get_files.sh)                       | An sbatch script to download all FASTQ files from the SRA (doesn't check for continuation) |
+| [get_files_queue](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/get_files_queue)                 | An sbatch script to download all FASTQ files from the SRA (does check for continuation)    |
+| [queue_fastqc.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_fastqc.sh)                 | Queues the FastQC jobs individually from ERR_list                                          |
+| [queue_flagstat.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_flagstat.sh)             | Queues the Flagstat jobs individually from ERR_list                                        |
+| [queue_star.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_star.sh)                     | Rakes ERR_list and creates individual sbatch commands to run STAR alignment                |
+| [queue_geneBody.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_geneBody.sh)             | Queues geneBody_coverage jobs individually from ERR_list                                   |
+| [queue_rseqc.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_rseqc.sh)                   | Queues read_distribution jobs individually from ERR_list                                   |
+| [queue_star.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/queue_star.sh)                     | Queues STAR jobs individually from ERR_list                                                |
+| [read_counts.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/read_counts.sh)                   | Runs FeatureCounts (could not get this to work)                                            |
+| [rseqc.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/rseqc.sh)                               | Runs RSeQC read_distribution                                                               |
+| [star.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/star.sh)                                 | Basic 1-pass STAR script                                                                   |
+| [star_for_loop.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/star_for_loop.sh)               | Runs STAR 1-pass as for loop                                                               |
+| [star_updated.sh](https://github.com/jessicaw9910/ANGSD/blob/master/scripts/star_updated.sh)                 | Run STAR alignment using basic 2-pass                                                      |
+
+## Interactive code
+
+### Setting up GitHub repo
+
+On github, I created an [ANGSD repo](https://github.com/jessicaw9910/ANGSD) without a `README` file.  I already had git initialized in my local ANGSD directory, so I used the following commands to link the local directory to the github repo.
+
+```{}
+cd OneDrive/MS-CB/ANGSD
+git add .
+git commit -m "commit with full folder"
+git remote add origin https://github.com/jessicaw9910/ANGSD.git
+git remote -v
+git push origin master
+```
+
+### Create ERR and FTP lists to download data
+
+```{}
+wget -O experiment_list.txt 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=PRJEB2784&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,fastq_ftp&download=txt'
+egrep "ERR" experiment_list.txt | cut -f 5 > ERR_list.txt
+cut -f 6 experiment_list.txt | egrep "ftp" > ftp_links.txt
+
+# create one directory per each sample and check number of folders in wd
+for recs in `cat ERR_list.txt`; 
+  do mkdir ${recs};
+done
+ls -l | grep "^d" | wc -l
+
+# looking at the experiment_list.txt file, there are 5 run_accessions without associated FASTQ files
+rmdir ERR062334 ERR062335 ERR062336 ERR062337 ERR062338
+
+# then used text editor to remove those 5 files from the ERR_list.txt
+nano ERR_list.txt
+
+# paired end reads in separate FASTQ files
+cat ftp_links.txt | grep -o "^.*;" | sed 's/.$//' > ftp_1.txt
+cat ftp_links.txt | egrep ";" | sed 's/^.*;//' > ftp_2.txt
+```
+
+### Subsetting ERR list to test scripts
+
+```{}
+# ran code using following commands (sed to break into smaller subsets)
+sed -n '1,3p;4q' ERR_list.txt > ERR_list_rev.txt
+sbatch queue_star.sh ERR_list_rev.txt
+```
+
+### Annotation file download
+
+```{}
+cd ..
+wget ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz -O hg38.99.gtf.gz
+```
+
+### STAR: hg38 index creation
 
 I created an index with the hg38 genome using the following commands.
 
@@ -63,333 +329,21 @@ STAR -- runMode genomeGenerate \
      -- sjdbGTFfile hg38.ensGene.gtf
 ```
 
-I downloaded and organized the relevant files using the below commands.
+### Unmapped reads 
+
+Once I saw the cancer reads were mapping less frequently using STAR, I added the unmapped reads as an output to the `star_updated.sh` script and re-ran for three cancer samples (ERR164583, ERR164584, and ERR164585).
 
 ```{}
-wget -O experiment_list.txt 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=PRJEB2784&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,fastq_ftp&download=txt'
-egrep "ERR" experiment_list.txt | cut -f 5 > ERR_list.txt
-cut -f 6 experiment_list.txt | egrep "ftp" > ftp_links.txt
+sed -n '1,10p;11q' ERR_cancer.txt > ERR_list_rev.txt
 
-# create one directory per each sample and check number of folders in wd
-for recs in `cat ERR_list.txt`; 
-  do mkdir ${recs};
-done
-ls -l | grep "^d" | wc -l
-
-# looking at the experiment_list.txt file, there are 5 run_accessions without associated FASTQ files
-rmdir ERR062334 ERR062335 ERR062336 ERR062337 ERR062338
-
-# then used text editor to remove those 5 files from the ERR_list.txt
-vi ERR_list.txt
-
-# paired end reads in separate FASTQ files
-cat ftp_links.txt | grep -o "^.*;" | sed 's/.$//' > ftp_1.txt
-cat ftp_links.txt | egrep ";" | sed 's/^.*;//' > ftp_2.txt
-
-for recs in `cat ERR_list.txt`;
-  do for links in `cat ftp_1.txt`;
-    do wget -P `pwd`/${recs}/ ftp://${links};
-  done;
-done
-
-for recs in `cat ERR_list.txt`;
-  do for links in `cat ftp_2.txt`;
-    do wget -P `pwd`/${recs}/ ftp://${links};
-  done;
-done
+cd $DIR/alignment/test
+spack find | egrep "fastx"
+spack load fastx-toolkit@0.0.14
+fastq_to_fasta -n -i ERR164585.Unmapped.out.mate1 -o ERR164585.Unmapped.out.mate1.fasta
+fastq_to_fasta -n -i ERR164585.Unmapped.out.mate2 -o ERR164585.Unmapped.out.mate2.fasta
 ```
 
-I wrote a script to run STAR aligner with paired end reads in separate FASTQ files.  I also altered some of the basic parameters, including:
-
- + `--outFilterMultimapNmax 20` to better align with ENCODE RNA-seq guidelines
- + `--alignSJoverhangMin 8` to better align with ENCODE RNA-seq guidelines
- + `-- alignIntronMin 10` as Luce mentioned in class, this default is considered not well chosen, so I reduced the minimum intron length to be more permissive
-
-```{}
-#! / bin / bash
-
-# Usage : star.sh <fastq_file_1> <fastq_file_2> <genref_dir> <alignment_dir>
-# Check that we have our command line argument (s)
-
-if [ "$#" -ne 4 ]; then
-    echo "You must enter exactly 2 command line arguments"
-    exit
-fi
-
-# Read argument from command line
-# check that necessary files and directories exist
-
-FILE1=$1
-FILE2=$2
-REF_DIR=$3
-ALIGN_DIR=$4
-
-if [[ ! -f $FILE1 ]]; then
-    echo "$FILE1 does not exist . Exiting ... ";
-    exit
-else
-    echo "$FILE1 exists ..."
-fi
-
-
-if [[ ! -f $FILE2 ]]; then
-    echo "$FILE2 does not exist . Exiting ... ";
-    exit
-else
-    echo "$FILE2 exists ..."
-fi
-
-
-#check to see if reference genome directory exist
-if [[ ! -d $REF_DIR ]]; then
-    echo "Reference genome directory does not exist . Exiting ... "
-    exit
-else
-    echo "Reference genome directory exists ..."
-fi
-
-
-#check to see if alignment output directory exist
-if [[ ! -d $ALIGN_DIR ]]; then
-    echo "Alignment output directory does not exist . Exiting ... "
-    exit
-else
-    echo "Alignment output directory exists ..."
-fi
-
-
-# Load packages that we will need
-spack load star@2.7.0e
-spack load samtools@1.9% gcc@6.3.0
-
-f1="$(basename -- $FILE1)"
-F1="${f1%.fastq.gz}"
-
-f2="$(basename -- $FILE2)"
-F2="${f2%.fastq.gz}"
-
-FCOMBO="${F1%_1}"
-
-
-# Run STAR , if result not already present
-if [ ! -r ${WORKING_DIRECTORY}/${F1}.Aligned.sortedByCoord.out.bam ]; then
-    STAR --runMode alignReads \
-         --genomeDir ${REF_DIR} \
-         --readFilesIn ${FILE1} ${FILE2} \
-         --readFilesCommand zcat \
-         --alignIntronMin 10 \
-         --outFilterMultimapNmax 20 \
-         --alignSJoverhangMin 8 \
-         --outFileNamePrefix ${ALIGN_DIR}/${FCOMBO}. \
-         --outSAMtype BAM SortedByCoordinate
-fi
-
-
-# Samtools index on BAM file
-if [ -r ${ALIGN_DIR}/${F1}.Aligned.sortedByCoord.out.bam ]; then
-    samtools index ${ALIGN_DIR}/${F1}.Aligned.sortedByCoord.out.bam
-fi
-
-if [ -r ${ALIGN_DIR}/${F2}.Aligned.sortedByCoord.out.bam ]; then
-    samtools index ${ALIGN_DIR}/${F2}.Aligned.sortedByCoord.out.bam
-fi
-
-exit
-```
-
-```{}
-bash star.sh fastq/ERR164473/ERR164473_1.fastq.gz fastq/ERR164473/ERR164473_2.fastq.gz hg38_STARindex/ alignment/
-cp ERR164473Aligned.sortedByCoord.out_bamqc.html /home/jwh4001/
-pscp jwh4001@aristotle.med.cornell.edu:/home/jwh4001/ERR164473.star.sorted_bamqc.html OneDrive/MS-CB/ANGSD/Project
-```
-
-I chose to use STAR instead of BWA given that this is RNA-seq data that will likely contain splice sites.  This was a good decision because 86.228% of sequences were primarily aligned and 23.726% contained splice sequences.  According to the BamQC report, this data set passed the Basic Statistics, Genome Coverage, Chromosome Read Density, Soft Clip Length Distributions, Indel Frequencies, and Mapping Quality Distribution QC tests.  However, the data set seemed to fail the Insert Length Distribution test.  I'm not sure what the distribution should generally look like, but it's heavily skewed towards the lower side with the greatest frequency of insertions <1990 bp.
-
-# GitHub Repo
-
-**1. Set up a github repository where you will store all your scripts, and ideally, even your report at one point. Send us the link to the repo. If you want to set your repo to private, you will have to grant us access, i.e. Friederike (friedue), Luce (lskrbnek), Merv (mfansler).**
-
-On github, I created an [ANGSD repo](https://github.com/jessicaw9910/ANGSD) without a `README` file.  I already had git initialized in my local ANGSD directory, so I used the following commands to link the local directory to the github repo.
-
-```{}
-cd OneDrive/MS-CB/ANGSD
-git add .
-git commit -m "commit with full folder"
-git remote add origin https://github.com/jessicaw9910/ANGSD.git
-git remote -v
-git push origin master
-```
-
-# Alignment
-
-Additionally, I had not downloaded the annotation file previously, so I did that, as well.
-
-```{}
-cd ..
-wget ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens/Homo_sapiens.GRCh38.99.gtf.gz -O hg38.99.gtf.gz
-```
-
-Per Merv's feedback, I altered the STAR code to run a 2-pass alignment rather than a 1-pass.  To do so, I put the initial alignment output in `alignment_1` and did not output a SAM/BAM file (`--outSAMtype None`).  Then I ran STAR again with the alignment output in `alignment_2` and added the option `--sjdbFileChrStartEnd ${ALIGN_DIR_1}/${recs}.SJ.out.tab`.
-
-Using the following partition, `srun -n 4 --pty --partition=angsd_class --mem=50G bash -i`, it took at least an hour to run each sample.  Therefore, it will take at least a week to run all 169 samples via batch queuing.  Can you please confirm that the 2-pass approach I've implemented is correct and advise if increasing memory beyond the 50G in the batch queue script would be appropriate?  I attempted to run on more than 1 thread previously, but was informed that batch queue scripts can only access 1 thread.  I have not attempted to access more than 100G of the partition for any task to date.
-
-[TO COME]
-
-Updated STAR alignment batch script (`STAR_updated.sh`)
-
-```{}
-#!/bin/bash -l
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="STAR_alignment"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=50G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-# Usage: sbatch star_updated.sh <ERR> <genref_dir> <alignment_dir>
-
-
-# Check that we have our command line arguments
-if [ "$#" -ne 3 ]; then
-    echo "You must enter exactly 3 command line arguments: <ERR> <generef_dir> $
-    exit
-fi
-
-
-# Read argument from command line
-ERR=$1
-REF_DIR=$2
-ALIGN_DIR=$3
-
-
-# check to see if reference genome directory exist
-if [[ ! -d $REF_DIR ]]; then
-    echo "Reference genome directory does not exist. Exiting... "
-    exit
-else
-    echo "Reference genome directory exists..."
-fi
-
-
-# check to see if alignment output directory exist
-if [[ ! -d $ALIGN_DIR ]]; then
-    echo "Alignment output directory does not exist. Exiting... "
-    exit
-else
-    echo "Alignment output directory exists..."
-fi
-
-
-# Load packages that we will need
-spack load star@2.7.0e
-spack load samtools@1.9% gcc@6.3.0
-
-
-FILE1=/athena/angsd/scratch/jwh4001/project/fastq/${ERR}/${ERR}_1.fastq.gz
-FILE2=/athena/angsd/scratch/jwh4001/project/fastq/${ERR}/${ERR}_2.fastq.gz
-
-if [[ ! -f $FILE1 ]]; then
-    echo "$FILE1 does not exist. Exiting...";
-    exit
-else
-    echo "$FILE1 exists..."
-if [[ ! -f $FILE2 ]]; then
-    echo "$FILE2 does not exist. Exiting...";
-    exit
-else
-    echo "$FILE2 exists..."
-fi
-
-
-# Run 2-pass STAR, if result not already present
-if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
-    STAR --runMode alignReads \
-         --runThreadN 4 \
-         --genomeDir ${REF_DIR} \
-         --readFilesIn ${FILE1} ${FILE2} \
-         --readFilesCommand zcat \
-         --twopassMode Basic \
-         --alignIntronMin 10 \
-         --outFilterMultimapNmax 20 \
-         --alignSJoverhangMin 8 \
-         --outFileNamePrefix ${ALIGN_DIR}/${ERR}. \
-         --outSAMtype BAM SortedByCoordinate
-fi
-
-# Samtools index on BAM file if index file doesn't already exist
-if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam.bai ]; then
-    samtools index ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam
-else
-    echo "${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam.bai already exists..."
-fi
-
-exit
-```
-
-New batch script to run new STAR alignment script for all ERR entries (`queue_star.sh`)
-
-```{}
-#!/bin/bash -l
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="batch_STAR"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=1G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-# Usage: sbatch queue_star.sh <ERR_list>
-
-
-# Check that we have our command line arguments
-if [ "$#" -ne 1 ]; then
-    echo "You must enter exactly 1 command line arguments: <ERR_list>"
-    exit
-fi
-
-
-# Read argument from command line
-ERR_FILE=$1
-
-# check to see if ERR list exists
-if [[ ! -r $ERR_FILE ]]; then
-    echo "ERR file does not exist. Exiting... "
-    exit
-else
-    echo "ERR file exists..."
-fi
-
-
-REF_DIR=/athena/angsd/scratch/jwh4001/project/hg38_STARindex/
-ALIGN_DIR=/athena/angsd/scratch/jwh4001/project/alignment/
-
-
-for ERR in `cat $ERR_FILE`;
-    do
-    if [ ! -r ${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam ]; then
-        sbatch star_updated.sh ${ERR} ${REF_DIR} ${ALIGN_DIR}
-    else
-        echo "${ALIGN_DIR}/${ERR}.Aligned.sortedByCoord.out.bam already exists..."
-    fi;
-done
-
-exit
-
-# ran code using following commands (sed to break into smaller subsets)
-sed -n '1,3p;4q' ERR_list.txt > ERR_list_rev.txt
-sbatch queue_star.sh ERR_list_rev.txt
-```
-
-# Quality Control
-
-## FastQC
+### FastQC
 
 ```{}
 export TIME='\t%E real,\t%U user,\t%S sys,\t%K amem,\t%M mmem'
@@ -404,51 +358,15 @@ done
 
 `4:37.39 real,   257.60 user,    21.49 sys,      0 amem, 203648 mmem`
 
-```{}
-#!/bin/bash
+This suggested that `fastqc.sh` should request 25GB of memory.
 
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="fastqc"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=25G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-# Usage : fastqc.sh <ERR> <REF_DIR> <OUT_DIR>
-
-# Check that we have our command line arguments
-if [ "$#" -ne 3 ]; then
-    echo "You must enter exactly 3 command line arguments: <ERR> <REF_DIR> <OUT_DIR>"
-    exit
-fi
-
-# Read argument from command line
-ERR=$1
-REF_DIR=$2
-OUT_DIR=$3
-
-spack load fastqc
-
-fastqc -o ${OUT_DIR} ${REF_DIR}/${ERR}.fastq.gz
-
-exit
-
-```
-
-## BamQC
+### BamQC
 
 ```{}
-/softlib/apps/EL7/BamQC/bin/bamqc -o QC/ -f hg38.99.gtf.gz -g hg38_STARindex/ alignment/*.bam
+/softlib/apps/EL7/BamQC/bin/bamqc -o QC/bamqc -f hg38.99.gtf.gz -g hg38_STARindex/ alignment/*.bam
 ```
 
-## RSeQC
-
-### Read Distribution
-
-#### Interactive
+### RSeQC: read distribution
 
 ```{}
 wget https://sourceforge.net/projects/rseqc/files/BED/Human_Homo_sapiens/hg38_RefSeq.bed.gz/download -O hg38_RefSeq.bed.gz
@@ -465,106 +383,11 @@ OUT_FILE="/home/jwh4001/angsd/jwh4001/project/QC/project.read_distribution.txt"
 singularity exec $RSEQC_IMAGE read_distribution.py -r $BED_FILE -i $BAM_FILE >> $OUT_FILE
 ```
 
-#### Batch Queue Script
-
-```{}
-#!/bin/bash -l
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="batch_rseqc"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=1G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-
-# Usage: sbatch queue_rseqc.sh <ERR_list>
-
-
-# Check that we have our command line arguments
-if [ "$#" -ne 1 ]; then
-    echo "You must enter exactly 1 command line arguments: <ERR_list>"
-    exit
-fi
-
-
-# Read argument from command line
-ERR_FILE=$1
-
-# check to see if ERR list exist
-if [[ ! -r $ERR_FILE ]]; then
-    echo "ERR list does not exist. Exiting... "
-    exit
-else
-    echo "ERR list exists..."
-fi
-
-
-BED_FILE="/home/jwh4001/angsd/jwh4001/project/hg38_RefSeq.bed"
-BAM_DIR="/home/jwh4001/angsd/jwh4001/project/alignment"
-OUT_DIR="/home/jwh4001/angsd/jwh4001/project/QC/rseqc"
-
-
-# run rseqc if file doesn't already exist
-for ERR in `cat $ERR_FILE`;
-    do
-    if [ ! -r ${OUT_DIR}/${ERR}.read_distribution.txt ]; then
-        sbatch rseqc.sh ${BED_FILE} ${BAM_DIR}/${ERR}.Aligned.sortedByCoord.out.bam \
-        ${OUT_DIR}/${ERR}.read_distribution.txt
-    else
-        echo "${OUT_DIR}/${ERR}.read_distribution.txt already exists..."
-    fi;
-done
-
-exit
-```
-
-#### Read Distribution Script
-
-```{}
-#!/bin/bash
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="rseqc"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=25G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-# Usage: rseqc.sh <BED_FILE> <BAM_FILE> <OUT_FILE>
-
-# Check that we have our command line arguments
-if [ "$#" -ne 3 ]; then
-    echo "You must enter exactly 3 command line arguments: <BED_FILE> <BAM_FILE$
-    exit
-fi
-# Read argument from command line
-BED_FILE=$1
-BAM_FILE=$2
-OUT_FILE=$3
-
-
-RSEQC_IMAGE="/athena/angsd/scratch/simg/rseqc-3.0.1.simg"
-
-spack load singularity@2.6.0
-
-singularity exec $RSEQC_IMAGE read_distribution.py -r $BED_FILE -i $BAM_FILE >> $OUT_FILE
-
-
-exit
-```
-
-#### Read Distribution For Loop
+Also ran RSeqQC `read_distribution.py` using a for loop.
 
 ```{}
 # batched ~10 at a time to confirm was running properly
-sed -n '2,10p;11q' ERR_cancer.txt > ERR_list_rev.txt
+sed -n '1,10p;11q' ERR_cancer.txt > ERR_list_rev.txt
 
 BED_FILE="/home/jwh4001/angsd/jwh4001/project/hg38_RefSeq.bed"
 BAM_DIR="/home/jwh4001/angsd/jwh4001/project/alignment"
@@ -581,32 +404,42 @@ for ERR in `cat ERR_list_rev.txt`; do
 done
 ```
 
-### Gene Body Coverage
+### Samtools: Flagstat
 
-I initially used the 
+```{}
+spack load samtools@1.9%gcc@6.3.0
+cd ../alignment
+for n in *.bam; do
+  name="${n%.Aligned.sortedByCoord.out.bam}"
+  samtools flagstat ${n} > ${name}.flagstat.txt;
+done
+mv *flagstat.txt ../QC/
 
-This took so long to run that I couldn't create a single output.  While I wrote scripts to batch this process, I could not get them to run in enough time.
+# as a test to allow me to write a script allocating enough memory
+/usr/bin/time samtools flagstat ../alignment/ERR164585.Aligned.sortedByCoord.out.bam > ../QC/flagstat/ERR164585.flagstat.txt
+```
 
-## MultiQC
+`1:27.13 real,   82.03 user,     1.92 sys,       0 amem, 3376 mmem`
 
-While I was unable to complete the QC using `RSeQC`, I incorporated the results from `BamQC` and `STAR` into a `MultiQC` report that I've uploaded to my [github repository](https://github.com/jessicaw9910/ANGSD).
+This suggested that `flagstat.sh` should request 5GB of memory.
+
+### MultiQC report
 
 ```{}
 cd $DIR/QC/
-spack load -r py-multiqc
-multiqc *bamqc.zip ../alignment_2/*.Log.final.out *.flagstat.txt
-cp multiqc_report.html ~
 
-multiqc -n multiqc_report_2020.04.12.html ../alignment/*.Log.final.out flagstat/*.flagstat.txt fastqc/*.zip
+spack load -r py-multiqc
+
+multiqc -n multiqc_report_2020.04.12.html ../alignment/*.Log.final.out flagstat/*.flagstat.txt fastqc/*.zip rseqc/*
+
+cp multiqc_report.html ~
 
 # could not figure out how to incorporate BamQC reports into MultiQC
 find . -type f -name '*.zip' -exec unzip -- '{}' -x '*.zip' \;
 /BamQC_files
 ```
 
-# featureCounts and DESeq2
-
-## featureCounts
+### featureCounts
 
 I used most of the `featureCounts` defaults, with the exception of `-p`, which I added, denoting that the reads are paired-end.  Note that I attempted to write a script as occassionally my connection timed out when I ran the below code, but I received an error message directing me to the `featureCounts` documentation when I ran an identical script to the below (adjusting directory location where necessary). 
 
@@ -629,6 +462,8 @@ featureCounts -p \ #since paired-end reads
 cp read_counts/project_20.03.14.* ~              
 ```
 
+### Downloading files from SCU and uploading to GitHub
+
 To download the following files and upload to my repo I used the following commands.
 
 ```{}
@@ -642,268 +477,20 @@ git commit -m "updated multiqc and read count files"
 git push origin master
 ```
 
-## DESeq2 analysis
+# References
 
-```{r import_data, message=FALSE}
-library(magrittr)
+Cheng, H.W., et al. CCL19-producing fibroblastic stromal cells restrain lung carcinoma growth by promoting local antitumor T-cell responses. J Allergy Clin Immunol 142, 1257-1271.e1254 (2018).  
 
-# import read counts file and remove extraneous info in colnames
-readcounts <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/counts/project_20.04.09.txt', sep = '\t',header = TRUE)
-names(readcounts) = gsub(pattern = "alignment.", replacement = "", x = names(readcounts))
-names(readcounts) = gsub(pattern = ".Aligned.sortedByCoord.out.bam", replacement = "", x = names(readcounts))
+Hou, H., Sun, D. & Zhang, X. The role of MDM2 amplification and overexpression in therapeutic resistance of malignant tumors. Cancer Cell Int 19, 216 (2019).  
 
-# import column names in order
-col_names <- read.table('C:/Users/jessb/OneDrive/MS-CB/ANGSD/project/files/col_names.txt', header = FALSE, stringsAsFactors = FALSE)
-orig_names <- names(readcounts)
-rownames(readcounts) <- readcounts$Geneid
-colnames(readcounts) <- c(colnames(readcounts)[1:6],
-                          col_names$V1)
+Ju, Y.S., et al. Extensive genomic and transcriptional diversity identified through massively parallel DNA and RNA sequencing of eighteen Korean individuals. Nat Genet 43, 745-752 (2011).  
 
-# remove first 6 columns and create sample conditions df
-readcounts <- readcounts[ , -c(1:6)]
-sample_info <- data.frame(condition = c(rep("normal", 27), rep("cancer", 36)))
-rownames(sample_info) <- names(readcounts)
-```
+Mao, Y., et al. Hyper expression of MTBP may be an adverse signal for the survival of some malignant tumors: A data-based analysis and clinical observation. Medicine (Baltimore) 97, e12021 (2018).  
 
-Given that we observed during alignment that fewer 
+Ricciuti, B., et al. Targeting the KRAS variant for treatment of non-small cell lung cancer: potential therapeutic applications. Expert Rev Respir Med 10, 53-68 (2016).  
 
-```{r qc_r, message=FALSE}
-library(ggplot2)
-library(reshape2)
+Seo, J.S., et al. The transcriptional landscape and mutational profile of lung adenocarcinoma. Genome Res 22, 2109-2119 (2012).  
 
-col_sums <- melt(colSums(readcounts))
-condition <- c(rep("normal", 27), rep("cancer", 36))
-col_sums <- cbind(col_sums, condition)
-for (n in seq(1, length(readcounts))){
-  col_sums$genes_expressed[n] <- sum(readcounts[, n] > 0)
-}
-rownames(col_sums) <- gsub("LC_", "", rownames(col_sums))
+Shen, A., et al. EBF1-Mediated Upregulation of Ribosome Assembly Factor PNO1 Contributes to Cancer Progression by Negatively Regulating the p53 Signaling Pathway. Cancer Res 79, 2257-2270 (2019).  
 
-ggplot(col_sums, aes(x = value, y = genes_expressed, color = condition)) +
-  geom_point() +
-  geom_smooth(method = lm) +
-  geom_text(label=rownames(col_sums), size=1.75, nudge_y = 150) +
-  xlab("Total number of transcripts detected") +
-  ylab("Number of unique genes detected")
-
-summary(lm(genes_expressed ~ value + factor(condition), data = col_sums))
-```
-
-```{r deseq_1, message=FALSE}
-library(DESeq2)
-library(magrittr)
-
-DESeq.ds <- DESeqDataSetFromMatrix(countData = readcounts,
-                                   colData = sample_info,
-                                   design = ~ condition)
-
-# drop genes with no reads
-keep_genes <- rowSums(counts(DESeq.ds)) > 0
-DESeq.ds <- DESeq.ds[ keep_genes, ]
-
-#rlog normalization
-DESeq.rlog <- rlog(DESeq.ds, blind = TRUE)
-rlog.norm.counts <- assay(DESeq.rlog)
-```
-
-```{r dim_red, message=FALSE}
-library(pheatmap)
-library(magrittr)
-
-corr_coeff <- cor(rlog.norm.counts, method = "pearson")
-fontsize = 10 - ncol(readcounts) / 15
-as.dist(1-corr_coeff, upper = TRUE) %>% 
-  as.matrix %>% 
-  pheatmap(., main = "Pearson correlation", fontsize = fontsize)
-
-as.dist(1 - corr_coeff) %>% hclust %>%
-  plot( ., labels = colnames(rlog.norm.counts),
-        main = "rlog transformed read counts", cex = 0.7)
-```
-
-```{r deseq_cancer, message=FALSE}
-library(DESeq2)
-library(magrittr)
-library(ggplot2)
-
-DESeq.ds <- DESeq(DESeq.ds)
-DGE.results <- results(DESeq.ds, independentFiltering = TRUE, alpha = 0.05)
-
-head(DGE.results)
-summary(DGE.results)
-table(DGE.results$padj < 0.05)
-```
-
-```{r}
-# BiocManager::install("EnsDb.Hsapiens.v86")
-library(EnsDb.Hsapiens.v86)
-
-sig_genes <- order(DGE.results$padj)[1: length(which(DGE.results$padj < 0.05))]
-sig_genes <- DataFrame(gene_index = sig_genes)
-sig_genes$geneid <- rownames(readcounts)[sig_genes$gene_index]
-sig_genes$padj <- sort(DGE.results$padj)[1: length(which(DGE.results$padj < 0.05))]
-
-geneIDs1 <- ensembldb::select(EnsDb.Hsapiens.v86, keys = sig_genes$geneid, keytype = "GENEID", columns = c("SYMBOL","GENEID"))
-
-sig_genes_new <- merge(sig_genes, geneIDs1, all.x = TRUE, by.x = "geneid", by.y = "GENEID")
-sig_genes_new <- sig_genes_new[order(sig_genes_new$padj), ]
-head(sig_genes_new)
-
-# write.csv(sig_genes_new, "sig_genes.csv")
-```
-
-# Scripts and Code
-
-## Downloading Data
-
-### get_files.sh
-
-I called the following script from the `/athena/angsd/scratch/jwh4001/project/fastq/` folder using the command `sbatch get_files.sh ERR_list.txt ftp_1.txt ftp_2.txt`.
-
-```{}
-#! / bin / bash
-
-# Usage : get_files.sh <ERR_list> <ftp_1> <ftp_2>
-# Check that we have our command line argument (s)
-
-if [ "$#" -ne 3 ]; then
-    echo "You must enter exactly 3 command line arguments"
-    exit
-fi
-
-# Read argument from command line
-
-ERR_LIST=$1
-FTP_1=$2
-FTP_2=$3
-
-for recs in `cat $ERR_LIST`;
-    do
-    if [[ ! -f ${recs}/${recs}_1.fastq.gz ]]; then
-        LINK="$(egrep ${recs} $FTP_1)"
-        wget -P `pwd`/${recs}/ ftp://${LINK}
-    else
-        echo "${recs}/${recs}_1.fastq.gz exists"
-    fi
-    if [[ ! -f ${recs}/${recs}_2.fastq.gz ]]; then
-        LINK="$(egrep ${recs} $FTP_2)"
-        wget -P `pwd`/${recs}/ ftp://${LINK}
-    else
-        echo "${recs}/${recs}_2.fastq_gz exists"
-    fi;
-done
-
-exit
-```
-
-## Samtools: Flagstat
-
-### Interactive 
-
-```{}
-spack load samtools@1.9%gcc@6.3.0
-cd ../alignment
-for n in *.bam; do
-  name="${n%.Aligned.sortedByCoord.out.bam}"
-  samtools flagstat ${n} > ${name}.flagstat.txt;
-done
-mv *flagstat.txt ../QC/
-
-# as a test to allow me to write a script allocating enough memory
-/usr/bin/time samtools flagstat ../alignment/ERR164585.Aligned.sortedByCoord.out.bam > ../QC/flagstat/ERR164585.flagstat.txt
-```
-
-`1:27.13 real,   82.03 user,     1.92 sys,       0 amem, 3376 mmem`
-
-This suggested that `flagstat.sh` should request 5GB of memory.
-
-### queue_flagstat.sh
-
-```{}
-#!/bin/bash -l
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="batch_flagstat"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=1G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-
-# Usage: sbatch queue_flagstat.sh <ERR_list>
-
-
-# Check that we have our command line arguments
-if [ "$#" -ne 1 ]; then
-    echo "You must enter exactly 1 command line arguments: <ERR_list>"
-    exit
-fi
-
-
-# Read argument from command line
-ERR_FILE=$1
-
-# check to see if ERR list exist
-if [[ ! -r $ERR_FILE ]]; then
-    echo "ERR list does not exist. Exiting... "
-    exit
-else
-    echo "ERR list exists..."
-fi
-
-
-OUT_DIR=/athena/angsd/scratch/jwh4001/project/QC/flagstat
-
-
-# run fastqc for first paired-end read
-for ERR in `cat $ERR_FILE`;
-    do
-    if [ ! -r ${OUT_DIR}/${ERR}.flagstat.txt ]; then
-        sbatch flagstat.sh ${ERR} ${OUT_DIR}
-    else
-        echo "${OUT_DIR}/${ERR}.flagstat.txt already exists..."
-    fi;
-done
-
-exit
-```
-
-### flagstat.sh
-
-```{}
-#!/bin/bash
-
-#SBATCH --partition=angsd_class
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --job-name="flagstat"
-#SBATCH --time=24:0:00 # HH/MM/SS
-#SBATCH --mem=5G # memory requested, units available: K,M,G,T
-#SBATCH --mail-user=jwh4001@med.cornell.edu
-#SBATCH --mail-type=ALL
-#SBATCH --requeue
-
-# Usage : flagstat.sh <ERR> <OUT_DIR>
-
-# Check that we have our command line arguments
-if [ "$#" -ne 2 ]; then
-    echo "You must enter exactly 2 command line arguments: <ERR> <OUT_DIR>"
-    exit
-fi
-
-# Read argument from command line
-ERR=$1
-OUT_DIR=$2
-
-spack load samtools@1.9%gcc@6.3.0
-
-samtools flagstat ../alignment/${ERR}.Aligned.sortedByCoord.out.bam > ${OUT_DIR}/${ERR}.flagstat.txt
-
-echo "${OUT_DIR}/${ERR}.flagstat.txt created..."
-
-exit
-```
-
+Zhong, S., et al. Overexpression Of hsa-miR-664a-3p Is Associated With Cigarette Smoke-Induced Chronic Obstructive Pulmonary Disease Via Targeting FHL1. Int J Chron Obstruct Pulmon Dis 14, 2319-2329 (2019).  
